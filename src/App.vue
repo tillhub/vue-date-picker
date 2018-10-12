@@ -42,4 +42,15 @@ span {
   color: #259ff6;
 }
 
+.p-sm {
+  padding: 10px;
+}
+
+.p-xs {
+  padding: 5px;
+}
+
+.m-t-md {
+  margin-top: 15px;
+}
 </style>

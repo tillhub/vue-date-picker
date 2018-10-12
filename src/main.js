@@ -12,7 +12,8 @@ Vue.use(ElementUI, { locale: elementLocale })
 
 Vue.use(VCalendar, {
   locale: 'en-UK',
-  // locale: 'de-DE', 
+  // locale: 'de-DE',
+  datePickerShowDayPopover: false, 
   formats: {
     title: 'MMMM YYYY',
     weekdays: 'WW',
