@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <DatePicker/>
+    <DatePicker
+     v-bind:tintColor="tintColor"
+     v-bind:buttonLabel="buttonLabel"
+     v-bind:hideDate="hideDate"/>
   </div>
 </template>
 
@@ -17,6 +20,18 @@ export default {
     locale: {
       type: String,
       default: 'en-GB'
+    },
+    tintColor: {
+      type: String,
+      default: '#357ebd'
+    },
+    buttonLabel: {
+      type: String,
+      default: 'All Time'
+    },
+    hideDate: {
+      type: Boolean,
+      default: false
     }
   },
   created() {
@@ -35,6 +50,7 @@ export default {
   }
 }
 </script>
+
 
 <style>
 #app {

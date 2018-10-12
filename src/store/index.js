@@ -4,17 +4,24 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    visableBox: false,
     selectedDate: {
       start: new Date(),
       end: new Date()
     },
     leftPage: {},
-    formatedSelected: 'All Time',
+    formattedSelected: null,
     selectedButton: null,
     lastCheck: false,
     sinceCheck: false
   },
   mutations: {
+    showBox(state){
+      state.visableBox = true
+    },
+    hideBox(state){
+      state.visableBox = false
+    },
     updateStart(state, payload) {
       const month = payload.getMonth()
       const year = payload.getFullYear()
@@ -28,9 +35,9 @@ export default new Vuex.Store({
       const start = state.selectedDate.start.toLocaleDateString('en-US', options);
       const end = state.selectedDate.end.toLocaleDateString('en-US', options);
       if(start == end){
-        state.formatedSelected = start
+        state.formattedSelected = start
       }else{
-        state.formatedSelected = start + ' To ' + end
+        state.formattedSelected = start + ' To ' + end
       }
     },
     updateSelectedButton(state, payload) {
@@ -60,6 +67,7 @@ export default new Vuex.Store({
       state.lastCheck = false
       state.sinceCheck = false
       state.selectedButton = null
+      state.formattedSelected = null
     }
   }
 })

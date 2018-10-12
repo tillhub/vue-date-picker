@@ -124,6 +124,7 @@ export default {
     },
     updateFormatSelection: function () {
       this.$store.commit('updateFormatSelection')
+      this.$store.commit('hideBox')
     },
     checkedBox: function (boolean, event) {
       if(boolean){

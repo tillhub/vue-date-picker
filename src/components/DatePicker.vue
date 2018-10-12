@@ -1,14 +1,15 @@
 <template>
   <el-popover
     placement="bottom"
-    trigger="click">
+    trigger="click"
+    :value="visableBox">
       <div class="p-sm">
         <div>
-          <h3>Select a date range or one of the presets below</h3>
+          <h3>'Select a date range or one of the presets below'</h3>
         </div>
         <v-date-picker
           mode="range"
-          tint-color="#357ebd"
+          v-bind:tint-color="tintColor"
           is-inline
           is-double-paned
           is-linked
@@ -22,7 +23,7 @@
         <ShortCutButtons />
         <CustomComponent/>
       </div>
-    <el-button slot="reference" icon="el-icon-date">{{ formatedSelected }}</el-button>
+    <el-button slot="reference" icon="el-icon-date" @click="showBox">{{ getButtonText() }}</el-button>
   </el-popover>
 </template>
 
@@ -38,15 +39,15 @@ export default {
     CustomComponent
   },
   computed: mapState([
+    'visableBox',
     'selectedDate',
     'leftPage',
     'rightPage',
-    'formatedSelected'
+    'formattedSelected'
   ]),
+  props: ['tintColor', 'buttonLabel', 'hideDate'],
   data () {
     return {
-      buttonLable: 'All Time',
-      activeButton: false,
       themeStyles: {
         wrapper: { 
           backgroundColor: 'white', 
@@ -60,6 +61,9 @@ export default {
     }
   },
   methods: {
+    showBox: function () {
+      this.$store.commit('showBox')
+    },
     updateCalenderDates: function (start, end) {
       this.$store.commit('updateStart', start)
       this.$store.commit('updateEnd', end)
@@ -79,6 +83,13 @@ export default {
     clearOpitons: function () {
       this.clearSelectedButton()
       this.clearCheckBoxes()
+    },
+    getButtonText: function () {
+      if(this.hideDate || !this.formattedSelected) {
+        return this.buttonLabel
+      }else {
+        return this.formattedSelected
+      }
     }
   }
 }
