@@ -70,7 +70,7 @@
     </el-row>
     <el-row type="flex" class="m-t-md" justify="center">
         <el-button @click="resetDefault">Reset</el-button>
-        <el-button type="primary">Apply</el-button>
+        <el-button type="primary" @click="updateFormatSelection">Apply</el-button>
     </el-row>
   </el-row>
 </template>
@@ -111,6 +111,7 @@ export default {
     updateCalenderDates: function (start, end) {
       this.$store.commit('updateStart', start)
       this.$store.commit('updateEnd', end)
+      this.clearSelectedButton()
     },
     updateLastCheck(boolean) {
         this.$store.commit('updateLastCheck', boolean)
@@ -118,17 +119,20 @@ export default {
     updateSinceCheck(boolean){
         this.$store.commit('updateSinceCheck', boolean)
     },
-    clearCheckBoxes: function () {
-      this.$store.commit('clearCheckBoxes')
+    clearSelectedButton: function () {
+      this.$store.commit('clearSelectedButton')
+    },
+    updateFormatSelection: function () {
+      this.$store.commit('updateFormatSelection')
     },
     checkedBox: function (boolean, event) {
       if(boolean){
         if(event.target.name === "lastCheck"){
-            this.checkLast();
-          this.applyLast();
+            this.checkLast()
+          this.applyLast()
         }else if(event.target.name === "sinceCheck"){
-            this.checkSince();
-          this.applySince();
+            this.checkSince()
+          this.applySince()
         }
       }
     },
@@ -143,64 +147,64 @@ export default {
     applyLast: function () {
       if(this.lastInput && this.lastDropdown){
         if(this.lastDropdown === 'days'){
-          this.setByDays(this.lastInput);
+          this.setByDays(this.lastInput)
         }else if(this.lastDropdown === 'weeks') {
-          this.setByWeeks(this.lastInput);
+          this.setByWeeks(this.lastInput)
         }else if(this.lastDropdown === 'months') {
-          this.setByMonths(this.lastInput);
+          this.setByMonths(this.lastInput)
         }else if(this.lastDropdown === 'years') {
-          this.setByYears(this.lastInput);
+          this.setByYears(this.lastInput)
         }
       }
     },
     applySince: function (){
       if(this.sinceInput && this.sinceDropdown && this.sinceDateTime){
         if(this.sinceDropdown === 'days'){
-          this.setByDays(this.sinceInput, this.sinceDateTime);
+          this.setByDays(this.sinceInput, this.sinceDateTime)
         }else if(this.sinceDropdown === 'weeks') {
-          this.setByWeeks(this.sinceInput, this.sinceDateTime);
+          this.setByWeeks(this.sinceInput, this.sinceDateTime)
         }else if(this.sinceDropdown === 'months') {
-          this.setByMonths(this.sinceInput, this.sinceDateTime);
+          this.setByMonths(this.sinceInput, this.sinceDateTime)
         }else if(this.sinceDropdown === 'years') {
-          this.setByYears(this.sinceInput, this.sinceDateTime);
+          this.setByYears(this.sinceInput, this.sinceDateTime)
         }
       }
     },
     resetDefault: function () {
       this.$store.commit('resetCalendar')
-      this.lastInput = 5;
-      this.lastDropdown = 'days';
-      this.sinceInput = 5;
-      this.sinceDropdown = 'days';
-      this.sinceDateTime = null;
+      this.lastInput = 5
+      this.lastDropdown = 'days'
+      this.sinceInput = 5
+      this.sinceDropdown = 'days'
+      this.sinceDateTime = null
     },
     setByDays: function (num, inputDate) {
-      let start = inputDate ? new Date(inputDate) : new Date();
-      let end = inputDate ? new Date(inputDate) : new Date();
+      let start = inputDate ? new Date(inputDate) : new Date()
+      let end = inputDate ? new Date(inputDate) : new Date()
 
-      let days = num - 1;
-      start.setDate(start.getDate() - days);
-        this.updateCalenderDates(start, end);
+      let days = num - 1
+      start.setDate(start.getDate() - days)
+      this.updateCalenderDates(start, end)
     },
     setByWeeks: function (num, inputDate) {
-      let start = inputDate ? new Date(inputDate) : new Date();
-      let end = inputDate ? new Date(inputDate) : new Date();
+      let start = inputDate ? new Date(inputDate) : new Date()
+      let end = inputDate ? new Date(inputDate) : new Date()
 
-      let days = num * 7 - 1;
-      start.setDate(start.getDate() - days);
-      this.updateCalenderDates(start, end);
+      let days = num * 7 - 1
+      start.setDate(start.getDate() - days)
+      this.updateCalenderDates(start, end)
     },
     setByMonths: function (num, inputDate) {
-      let date = inputDate ? new Date(inputDate) : new Date();
-      const start = new Date(date.getFullYear(), date.getMonth() - num,  date.getDate());
-      const end = date;
-      this.updateCalenderDates(start, end);
+      let date = inputDate ? new Date(inputDate) : new Date()
+      const start = new Date(date.getFullYear(), date.getMonth() - num,  date.getDate())
+      const end = date
+      this.updateCalenderDates(start, end)
     },
     setByYears: function (num, inputDate) {
-      let date = inputDate ? new Date(inputDate) : new Date();
-      const start =  new Date(date.getFullYear() - num, date.getDate());
-      const end = date;
-      this.updateCalenderDates(start, end);
+      let date = inputDate ? new Date(inputDate) : new Date()
+      const start =  new Date(date.getFullYear() - num, date.getDate())
+      const end = date
+      this.updateCalenderDates(start, end)
     }
   }
 }

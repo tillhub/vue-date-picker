@@ -5,12 +5,33 @@
 </template>
 
 <script>
+import { setupCalendar } from "v-calendar";
 import DatePicker from './components/DatePicker'
 
 export default {
   name: 'App',
   components: {
     DatePicker
+  },
+  props: {
+    locale: {
+      type: String,
+      default: 'en-GB'
+    }
+  },
+  created() {
+    setupCalendar({
+      locale: this.locale ? this.locale : 'en',
+      datePickerShowDayPopover: false, 
+      formats: {
+        title: 'MMMM YYYY',
+        weekdays: 'WW',
+        navMonths: 'MMM',
+        input: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD'],
+        dayPopover: 'L',
+        data: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD']
+      }
+    });
   }
 }
 </script>

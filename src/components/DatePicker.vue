@@ -8,11 +8,11 @@
         </div>
         <v-date-picker
           mode="range"
+          tint-color="#357ebd"
           is-inline
           is-double-paned
           is-linked
           update-on-input
-          tint-color="#357ebd"
           :value="selectedDate"
           :fromPage="leftPage"
           :pane-width="200"
@@ -22,7 +22,7 @@
         <ShortCutButtons />
         <CustomComponent/>
       </div>
-    <el-button slot="reference" icon="el-icon-date">All Time<i class="el-icon-arrow-down"/></el-button>
+    <el-button slot="reference" icon="el-icon-date">{{ formatedSelected }}</el-button>
   </el-popover>
 </template>
 
@@ -33,18 +33,19 @@ import CustomComponent from './CustomComponent.vue'
 
 export default {
   name: 'DatePicker',
-  computed: mapState([
-    'selectedDate',
-    'leftPage',
-    'rightPage'
-  ]),
   components: {
     ShortCutButtons,
     CustomComponent
   },
+  computed: mapState([
+    'selectedDate',
+    'leftPage',
+    'rightPage',
+    'formatedSelected'
+  ]),
   data () {
     return {
-      msg: 'Tillhub Date Picker',
+      buttonLable: 'All Time',
       activeButton: false,
       themeStyles: {
         wrapper: { 
@@ -60,22 +61,25 @@ export default {
   },
   methods: {
     updateCalenderDates: function (start, end) {
-      this.$store.commit('updateStart', start);
-      this.$store.commit('updateEnd', end);
-
+      this.$store.commit('updateStart', start)
+      this.$store.commit('updateEnd', end)
     },
-    selectCalenderFromGui: function (selectedDates) {
-      const start = selectedDates.start;
-      const end = selectedDates.end;
-      this.updateCalenderDates(start, end);
-      this.clearCheckBoxes();
+    clearSelectedButton: function () {
+      this.$store.commit('clearSelectedButton')
     },
     clearCheckBoxes: function () {
       this.$store.commit('clearCheckBoxes')
+    },
+    selectCalenderFromGui: function (selectedDates) {
+      const start = selectedDates.start
+      const end = selectedDates.end
+      this.updateCalenderDates(start, end)
+      this.clearOpitons()
+    },
+    clearOpitons: function () {
+      this.clearSelectedButton()
+      this.clearCheckBoxes()
     }
   }
 }
 </script>
-
-<style scoped>
-</style>
