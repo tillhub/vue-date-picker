@@ -70,7 +70,7 @@
     </el-row>
     <el-row type="flex" class="m-t-md" justify="center">
         <el-button @click="resetDefault">Reset</el-button>
-        <el-button type="primary" @click="updateFormatSelection">Apply</el-button>
+        <el-button type="primary" @click="applyDate">Apply</el-button>
     </el-row>
   </el-row>
 </template>
@@ -82,8 +82,10 @@ export default {
   name: 'CustomComponent',
   computed: mapState([
       'lastCheck',
-      'sinceCheck'
+      'sinceCheck',
+      'selectedDate'
   ]),
+  props: ['applyAction'],
   data () {
     return {
       showCustom: true,
@@ -122,8 +124,9 @@ export default {
     clearSelectedButton: function () {
       this.$store.commit('clearSelectedButton')
     },
-    updateFormatSelection: function () {
-      this.$store.commit('updateFormatSelection')
+    applyDate: function () {
+      this.$store.commit('applyDate')
+      this.applyAction(this.selectedDate)
       this.$store.commit('hideBox')
     },
     checkedBox: function (boolean, event) {

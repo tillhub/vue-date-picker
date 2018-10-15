@@ -7,8 +7,6 @@ import App from './App';
 import elementLocale from 'element-ui/lib/locale/lang/en';
 import store from './store'
 
-
-
 Vue.config.productionTip = false
 Vue.use(ElementUI, { locale: elementLocale })
 Vue.use(VCalendar)

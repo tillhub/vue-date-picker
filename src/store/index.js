@@ -5,15 +5,50 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     visableBox: false,
+    appliedStart: null,
+    appliedEnd: null,  
     selectedDate: {
       start: new Date(),
       end: new Date()
     },
     leftPage: {},
-    formattedSelected: null,
     selectedButton: null,
     lastCheck: false,
-    sinceCheck: false
+    sinceCheck: false,
+    showDateText: false
+  },
+  getters: {
+    buttonText: state => showTime => {
+      if (!state.appliedStart && !state.appliedEnd){
+        return null;
+      } 
+      const options = { year: 'numeric', month: 'numeric', day: 'numeric'};
+      if(showTime) {
+        options.hour = 'numeric'
+        options.minute = 'numeric' 
+      }
+      const start = state.appliedStart.toLocaleDateString('en-US', options);
+      const end = state.appliedEnd.toLocaleDateString('en-US', options);
+      if(start == end){
+        return start
+      }else{
+        return start + ' to ' + end
+      }
+    },
+    dateText: state => showTime => {
+      const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+      if (showTime) {
+        options.hour = 'numeric'
+        options.minute = 'numeric'
+      }
+      const start = state.selectedDate.start.toLocaleDateString('en-US', options);
+      const end = state.selectedDate.end.toLocaleDateString('en-US', options);
+      if (start == end) {
+        return start
+      } else {
+        return start + ' to ' + end
+      }
+    }
   },
   mutations: {
     showBox(state){
@@ -23,22 +58,20 @@ export default new Vuex.Store({
       state.visableBox = false
     },
     updateStart(state, payload) {
-      const month = payload.getMonth()
-      const year = payload.getFullYear()
       state.selectedDate.start = payload
+      state.leftPage = {
+        month: payload.getMonth() + 1,
+        year: payload.getFullYear()
+      }
     },
     updateEnd(state, payload) {
       state.selectedDate.end = payload
-    },
-    updateFormatSelection(state) {
-      const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: "numeric", minute: "numeric" };
-      const start = state.selectedDate.start.toLocaleDateString('en-US', options);
-      const end = state.selectedDate.end.toLocaleDateString('en-US', options);
-      if(start == end){
-        state.formattedSelected = start
-      }else{
-        state.formattedSelected = start + ' To ' + end
+      if (!state.showDateText){
+        state.showDateText = true
       }
+    },
+    updateDateStatus(state) {
+      state.showDateText = true
     },
     updateSelectedButton(state, payload) {
       state.selectedButton = payload
@@ -61,13 +94,21 @@ export default new Vuex.Store({
         state.sinceCheck = false
       }
     },
+    applyDate(state) {
+      state.appliedStart = state.selectedDate.start
+      state.appliedEnd = state.selectedDate.end
+    },
+    applyInitialDates(state, start, end) {
+      state.appliedStart = state.start
+      state.appliedEnd = state.end
+    },
     resetCalendar(state) {
       state.selectedDate.start = new Date()
       state.selectedDate.end = new Date()
       state.lastCheck = false
       state.sinceCheck = false
       state.selectedButton = null
-      state.formattedSelected = null
+      state.showDateText = false
     }
   }
 })
