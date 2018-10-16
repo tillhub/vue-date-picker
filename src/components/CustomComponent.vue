@@ -1,14 +1,14 @@
 <template>
   <el-row>
     <el-row type="flex" justify="space-between" align="middle">
-      <h3>Custom</h3>
+      <h3>{{ $t("custom") }}</h3>
       <el-switch v-model="showCustom" active-color="#50e3c1">
       </el-switch>
     </el-row>
     <el-row :class="{'hide': !showCustom}">
       <el-row type="flex" class="p-xs" align="middle">
         <el-checkbox :value="lastCheck" name="lastCheck" @change="checkedBox"></el-checkbox>
-          <span class="check-lable">Last</span>
+          <span class="check-lable">{{ $t("last") }}</span>
           <el-input-number 
             size="mini" 
             v-model="lastInput"
@@ -26,9 +26,9 @@
           @change="applyLast">
           <el-option
             v-for="item in dateUnits"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
+            :key="item"
+            :label="$t(item)"
+            :value="item">
           </el-option>
         </el-select>
       </el-row>
@@ -50,27 +50,27 @@
           @change="applySince">
           <el-option
             v-for="item in dateUnits"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
+            :key="item"
+            :label="$t(item)"
+            :value="item">
           </el-option>
         </el-select>
-        <span class="check-lable">since</span>
+        <span class="check-lable">{{ $t("since") }}</span>
         <el-date-picker
           v-model="sinceDateTime"
           class="time-picker"
           size="mini"
           type="datetime"
-          placeholder="Select date and time"
           default-time="12:00:00"
+          :placeholder="$t('selectDateAndTime')"
           @focus="checkSince"
           @change="applySince">
         </el-date-picker>
       </el-row>
     </el-row>
     <el-row type="flex" class="m-t-md" justify="center">
-        <el-button @click="resetDefault">Reset</el-button>
-        <el-button type="primary" @click="applyDate">Apply</el-button>
+        <el-button @click="resetDefault">{{ $t("reset") }}</el-button>
+        <el-button type="primary" @click="applyDate">{{ $t("apply") }}</el-button>
     </el-row>
   </el-row>
 </template>
@@ -85,28 +85,16 @@ export default {
       'sinceCheck',
       'selectedDate'
   ]),
-  props: ['applyAction'],
+  props: ['applyAction', 'initCustomToggle'],
   data () {
     return {
-      showCustom: true,
+      showCustom: this.initCustomToggle,
       lastInput: 5,
       lastDropdown: 'days',
       sinceInput: 5,
       sinceDropdown: 'days',
       sinceDateTime: null,
-      dateUnits: [{
-        value: 'days',
-        label: 'days'
-      }, {
-        value: 'weeks',
-        label: 'weeks'
-      }, {
-        value: 'months',
-        label: 'months'
-      }, {
-        value: 'years',
-        label: 'years'
-      }]
+      dateUnits: ['days', 'weeks', 'months', 'years']
     }
   },
   methods: {

@@ -22,7 +22,9 @@
               @input="selectCalenderFromGui">
             </v-date-picker>
             <ShortCutButtons />
-            <CustomComponent v-bind:applyAction="applyAction"/>
+            <CustomComponent 
+              v-bind:applyAction="applyAction" 
+              v-bind:initCustomToggle="initCustomToggle"/>
           </div>
         <el-button 
           slot="reference" 
@@ -61,20 +63,19 @@ export default {
       'dateText'
     ])
   },
-    props: {
+  props: {
     locale: {
       type: String,
-      default: 'en-US'
+      default: 'en'
     },
     tintColor: {
       type: String,
       default: '#357ebd'
     },
     buttonLabel: {
-      type: String,
-      default: 'All Time'
+      type: String
     },
-    hideDate: {
+    hideDateInButton: {
       type: Boolean,
       default: false
     },
@@ -85,6 +86,10 @@ export default {
     buttonWidth: {
       type: String,
       default: 'auto' 
+    },
+    initCustomToggle: {
+      type: Boolean,
+      default: true
     },
     applyAction: {
       type: Function,
@@ -99,9 +104,12 @@ export default {
       default: null
     }
   },
-  mount() {
+  mounted() {
     if(this.start && this.end) {
-      this.$store.commit('applyInitialDates', this.start, this.end)
+      this.$store.commit('setInitialDates', this.start, this.end)
+    }
+    if(this.locale === 'de'){
+      this.$i18n.locale = 'de'
     }
   },
   data () {
@@ -146,15 +154,15 @@ export default {
       this.clearCheckBoxes()
     },
     getButtonText: function () {
-      if(this.hideDate || !this.appliedStart) {
-        return this.buttonLabel
+      if(this.hideDateInButton || !this.appliedStart) {
+        return this.buttonLabel || this.$t('select')
       }else {
         return this.buttonText(this.showTime)
       }
     },
     getMessage: function () {
       if(!this.showDateText) {
-        return 'Select a date range or one of the presets below'
+        return this.$t('instructions')
       }else {
         return this.dateText(this.showTime)
       }
@@ -162,7 +170,7 @@ export default {
   },
   created() {
     setupCalendar({
-      locale: this.locale ? this.locale : 'en',
+      locale: this.locale,
       datePickerShowDayPopover: false, 
       formats: {
         title: 'MMMM YYYY',
@@ -180,7 +188,7 @@ export default {
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -193,7 +201,7 @@ textarea,
 button,
 h3,
 span {
-  font-family: "Avenir";
+  font-family: "Lato";
 }
 
 .el-button--primary {

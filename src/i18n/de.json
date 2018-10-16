@@ -1,0 +1,23 @@
+{
+  "today": "Heute",
+  "yesterday": "Gestern",
+  "thisWeek": "Diese Woche",
+  "lastWeek": "Letzte Woche",
+  "thisMonth": "Dieser Monat",
+  "lastMonth": "Letzter Monat",
+  "thisYear": "Dieses Jahr",
+  "lastYear": "Vergangenes Jahr",
+  "custom": "Custom",
+  "to": "zu",
+  "last": "Letzte(r)",
+  "since": "seit",
+  "reset": "Zurück",
+  "apply": "Anwenden",
+  "instructions": "Wählen Sie aus den untenstehenden Daten aus",
+  "selectDateAndTime": "Wählen Sie Daten und Uhrzeit aus",
+  "days": "Tage",
+  "weeks": "Wochen",
+  "months": "Monate",
+  "years": "Jahre",
+  "select": "Auswahl"
+}

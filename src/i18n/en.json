@@ -1,0 +1,23 @@
+{
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "thisWeek": "This Week",
+  "lastWeek": "Last Week",
+  "thisMonth": "This Month",
+  "lastMonth": "Last Month",
+  "thisYear": "This Year",
+  "lastYear": "Last Year",
+  "custom": "Custom",
+  "to": "to",
+  "last": "Last",
+  "since": "since",
+  "reset": "Reset",
+  "apply": "Apply",
+  "instructions": "Select a date range or one of the presets below",
+  "selectDateAndTime": "Select Date and Time",
+  "days": "Days",
+  "weeks": "Weeks",
+  "months": "Months",
+  "years": "Years",
+  "select": "Select"
+}

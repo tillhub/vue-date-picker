@@ -27,8 +27,8 @@ export default new Vuex.Store({
         options.hour = 'numeric'
         options.minute = 'numeric' 
       }
-      const start = state.appliedStart.toLocaleDateString('en-US', options);
-      const end = state.appliedEnd.toLocaleDateString('en-US', options);
+      const start = state.appliedStart.toLocaleDateString(state.locale, options);
+      const end = state.appliedEnd.toLocaleDateString(state.locale, options);
       if(start == end){
         return start
       }else{
@@ -41,8 +41,8 @@ export default new Vuex.Store({
         options.hour = 'numeric'
         options.minute = 'numeric'
       }
-      const start = state.selectedDate.start.toLocaleDateString('en-US', options);
-      const end = state.selectedDate.end.toLocaleDateString('en-US', options);
+      const start = state.selectedDate.start.toLocaleDateString(state.locale, options);
+      const end = state.selectedDate.end.toLocaleDateString(state.locale, options);
       if (start == end) {
         return start
       } else {
@@ -98,7 +98,7 @@ export default new Vuex.Store({
       state.appliedStart = state.selectedDate.start
       state.appliedEnd = state.selectedDate.end
     },
-    applyInitialDates(state, start, end) {
+    setInitialDates(state, start, end) {
       state.appliedStart = state.start
       state.appliedEnd = state.end
     },

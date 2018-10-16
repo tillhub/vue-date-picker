@@ -1,62 +1,61 @@
 <template>
     <el-row type="flex" class="p-sm" justify="space-between">
-      <el-col>
+      <div>
         <el-button 
           plain
           type="text"
-          name="today"
           class="goToButton"
           :class="{ active: selectedButton === 'today' }"
-          @click="goToToday">Today</el-button>
+          @click="goToToday">{{ $t("today") }}</el-button>
         <el-button 
           plain
           type="text"
           class="goToButton"
           :class="{ active: selectedButton === 'yesterday' }"
-          @click="goToYesterday">Yesterday</el-button>
-      </el-col>
-      <el-col>
+          @click="goToYesterday">{{ $t("yesterday") }}</el-button>
+      </div>
+      <div>
         <el-button 
           plain
           type="text"
           class="goToButton"
           :class="{ active: selectedButton === 'thisWeek' }"
-          @click="goToThisWeek">This week</el-button>
+          @click="goToThisWeek">{{ $t("thisWeek") }}</el-button>
         <el-button
           plain
           type="text"
           class="goToButton"
           :class="{ active: selectedButton === 'lastWeek' }"
-          @click="goToLastWeek">Last week</el-button>
-      </el-col>
-      <el-col>
+          @click="goToLastWeek">{{ $t("lastWeek") }}</el-button>
+      </div>
+      <div>
         <el-button
           plain
           type="text"
           class="goToButton"
           :class="{ active: selectedButton === 'thisMonth' }"
-          @click="goToThisMonth">This month</el-button>
+          @click="goToThisMonth">{{ $t("thisMonth") }}</el-button>
         <el-button 
           plain
           type="text"
           class="goToButton"
           :class="{ active: selectedButton === 'lastMonth' }"
-          @click="goToLastMonth">Last month</el-button>
-      </el-col>
-      <el-col>
+          @click="goToLastMonth">{{ $t("lastMonth") }}</el-button>
+      </div>
+      <div>
         <el-button
           plain 
           type="text"
           class="goToButton"
           :class="{ active: selectedButton === 'thisYear' }"
-          @click="goToThisYear">This year</el-button>
+          @click="goToThisYear">{{ $t("thisYear") }}</el-button>
         <el-button
           plain 
           type="text"
           class="goToButton"
            :class="{ active: selectedButton === 'lastYear' }"
-          @click="goToLastYear">Last year</el-button> 
-      </el-col>
+          @click="goToLastYear">{{ $t("lastYear") }}</el-button> 
+      </div>
     </el-row>
 </template>
 
@@ -66,7 +65,8 @@ import { mapState } from 'vuex'
 export default {
   name: 'ShortCutButtons',
   computed: mapState([
-    'selectedButton'
+    'selectedButton',
+    'locale'
   ]),
   methods: {
     updateCalenderDates: function (start, end) {
