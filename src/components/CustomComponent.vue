@@ -70,22 +70,16 @@
     </el-row>
     <el-row type="flex" class="m-t-md" justify="center">
         <el-button @click="resetDefault">{{ $t("reset") }}</el-button>
-        <el-button type="primary" @click="applyDate">{{ $t("apply") }}</el-button>
+        <el-button type="primary" @click="applyAction">{{ $t("apply") }}</el-button>
     </el-row>
   </el-row>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 
 export default {
   name: 'CustomComponent',
-  computed: mapState([
-      'lastCheck',
-      'sinceCheck',
-      'selectedDate'
-  ]),
-  props: ['applyAction', 'initCustomToggle'],
+  props: ['initCustomToggle', 'sinceCheck', 'lastCheck'],
   data () {
     return {
       showCustom: this.initCustomToggle,
@@ -99,23 +93,11 @@ export default {
   },
   methods: {
     updateCalenderDates: function (start, end) {
-      this.$store.commit('updateStart', start)
-      this.$store.commit('updateEnd', end)
-      this.clearSelectedButton()
+      this.$emit('update-calendar', start, end)
+      this.$emit('clear-options')
     },
-    updateLastCheck(boolean) {
-        this.$store.commit('updateLastCheck', boolean)
-    },
-    updateSinceCheck(boolean){
-        this.$store.commit('updateSinceCheck', boolean)
-    },
-    clearSelectedButton: function () {
-      this.$store.commit('clearSelectedButton')
-    },
-    applyDate: function () {
-      this.$store.commit('applyDate')
-      this.applyAction(this.selectedDate)
-      this.$store.commit('hideBox')
+    applyAction: function () {
+      this.$emit('apply-action')
     },
     checkedBox: function (boolean, event) {
       if(boolean){
@@ -129,12 +111,10 @@ export default {
       }
     },
     checkLast: function () {
-      this.updateSinceCheck(false)
-      this.updateLastCheck(true)
+      this.$emit('update-checks', true, false)
     },
     checkSince: function () {
-      this.updateSinceCheck(true)
-      this.updateLastCheck(false)
+      this.$emit('update-checks', false, true)
     },
     applyLast: function () {
       if(this.lastInput && this.lastDropdown){
@@ -163,7 +143,7 @@ export default {
       }
     },
     resetDefault: function () {
-      this.$store.commit('resetCalendar')
+      this.$emit('reset-default')
       this.lastInput = 5
       this.lastDropdown = 'days'
       this.sinceInput = 5
@@ -203,6 +183,16 @@ export default {
 </script>
 
 <style scoped>
+
+input,
+select,
+textarea,
+button,
+h3,
+span {
+  font-family: "Lato";
+}
+
 .hide {
   display: none;
 }

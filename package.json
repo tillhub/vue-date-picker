@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "build": "node build/build.js"
   },
   "dependencies": {
@@ -14,10 +15,10 @@
     "typeface-lato": "0.0.54",
     "v-calendar": "^0.9.7",
     "vue": "^2.5.2",
-    "vue-i18n": "^8.2.1",
-    "vuex": "^3.0.1"
+    "vue-i18n": "^8.2.1"
   },
   "devDependencies": {
+    "@storybook/vue": "^3.4.11",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
