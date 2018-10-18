@@ -6,13 +6,13 @@
           type="text"
           class="goToButton"
           :class="{ active: shortCutButton === 'today' }"
-          @click="goToToday">{{ $t("today") }}</el-button>
+          @click="goToToday">{{ getTranlation("today") }}</el-button>
         <el-button 
           plain
           type="text"
           class="goToButton"
           :class="{ active: shortCutButton === 'yesterday' }"
-          @click="goToYesterday">{{ $t("yesterday") }}</el-button>
+          @click="goToYesterday">{{ getTranlation("yesterday") }}</el-button>
       </div>
       <div>
         <el-button 
@@ -20,13 +20,13 @@
           type="text"
           class="goToButton"
           :class="{ active: shortCutButton === 'thisWeek' }"
-          @click="goToThisWeek">{{ $t("thisWeek") }}</el-button>
+          @click="goToThisWeek">{{ getTranlation("thisWeek") }}</el-button>
         <el-button
           plain
           type="text"
           class="goToButton"
           :class="{ active: shortCutButton === 'lastWeek' }"
-          @click="goToLastWeek">{{ $t("lastWeek") }}</el-button>
+          @click="goToLastWeek">{{ getTranlation("lastWeek") }}</el-button>
       </div>
       <div>
         <el-button
@@ -34,13 +34,13 @@
           type="text"
           class="goToButton"
           :class="{ active: shortCutButton === 'thisMonth' }"
-          @click="goToThisMonth">{{ $t("thisMonth") }}</el-button>
+          @click="goToThisMonth">{{ getTranlation("thisMonth") }}</el-button>
         <el-button 
           plain
           type="text"
           class="goToButton"
           :class="{ active: shortCutButton === 'lastMonth' }"
-          @click="goToLastMonth">{{ $t("lastMonth") }}</el-button>
+          @click="goToLastMonth">{{ getTranlation("lastMonth") }}</el-button>
       </div>
       <div>
         <el-button
@@ -48,23 +48,41 @@
           type="text"
           class="goToButton"
           :class="{ active: shortCutButton === 'thisYear' }"
-          @click="goToThisYear">{{ $t("thisYear") }}</el-button>
+          @click="goToThisYear">{{ getTranlation("thisYear") }}</el-button>
         <el-button
           plain 
           type="text"
           class="goToButton"
            :class="{ active: shortCutButton === 'lastYear' }"
-          @click="goToLastYear">{{ $t("lastYear") }}</el-button> 
+          @click="goToLastYear">{{ getTranlation("lastYear") }}</el-button> 
       </div>
     </el-row>
 </template>
 
 <script>
+import en from '../i18n/en.json'
+import de from '../i18n/de.json'
 
 export default {
   name: 'ShortCutButtons',
-  props: ['shortCutButton'],
+  props: ['shortCutButton', 'locale'],
   methods: {
+    getTranlation: function (key) {
+      if(this.getLocale() == 'en'){
+        return en[key]
+      }else {
+        return de[key]
+      }
+    },
+    getLocale: function () {
+      let locale = this.locale || this.$i18n.locale || 'en'
+      locale = locale.substring(0, 2).toLowerCase()
+      if(locale == 'en' || locale == 'de'){
+        return locale
+      }else {
+        return 'en'
+      }
+    },
     goToToday: function () {
         const today = new Date()
         this.$emit('update-short-cut', 'today')

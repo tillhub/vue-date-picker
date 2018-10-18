@@ -1,4 +1,5 @@
 <template>
+<div id="vueDatePicker">
   <el-popover
     placement="bottom"
     trigger="click"
@@ -14,11 +15,13 @@
         :fromPage="fromPage"
         @update-calendar="updateCalendar"
         @clear-options="clearOptions"/>
-        <ShortCutButtons 
+        <ShortCutButtons
+          :locale="locale"
           :shortCutButton="shortCutButton"
           @update-short-cut="updateShortCut"
           @update-calendar="updateCalendar"/>
-        <CustomComponent 
+        <CustomComponent
+          :locale="locale"
           :lastCheck ="lastCheck"
           :sinceCheck="sinceCheck"
           :initCustomToggle="initCustomToggle"
@@ -36,6 +39,7 @@
       {{ getButtonText() }}
     </el-button>
   </el-popover>
+</div>
 </template>
 
 <script>
@@ -45,8 +49,6 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 import deLocale from 'element-ui/lib/locale/lang/de'
 import ElementLocale from 'element-ui/lib/locale'
 import VueI18n from 'vue-i18n'
-import en from '../i18n/en.json'
-import de from '../i18n/de.json'
 require('typeface-lato')
 
 import { Popover, Button, Row, Col, Switch,  Checkbox,  InputNumber,  Select,  Option,  DatePicker} from 'element-ui';
@@ -65,6 +67,8 @@ Vue.use(VueI18n)
 import ShortCutButtons from './ShortCutButtons.vue'
 import CustomComponent from './CustomComponent.vue'
 import DateRangePicker from './DateRangePicker.vue'
+import en from '../i18n/en.json'
+import de from '../i18n/de.json'
 
 export default {
   name: 'VueDatePicker',
@@ -75,7 +79,8 @@ export default {
   },
   props: {
     locale: {
-      type: String
+      type: String,
+      default: 'en'
     },
     tintColor: {
       type: String,
@@ -109,13 +114,8 @@ export default {
       default: null
     }
   },
-  beforeCreate(){
-    this.$i18n.mergeLocaleMessage('en', {...en})
-    this.$i18n.mergeLocaleMessage('de', {...de })
-  },
   mounted() {
     const locale = this.getLocale()
-    this.$i18n.locale = locale
     const i18n = new VueI18n({
       locale: locale,
       messages: {
@@ -145,8 +145,15 @@ export default {
     }
   },
   methods: {
+    getTranlation: function (key) {
+      if(this.getLocale() == 'en'){
+        return en[key]
+      }else {
+        return de[key]
+      }
+    },
     getLocale: function () {
-      let locale = this.locale || this.$i18n.locale || 'en'
+      let locale = this.locale
       locale = locale.substring(0, 2).toLowerCase()
       if(locale == 'en' || locale == 'de'){
         return locale
@@ -224,14 +231,14 @@ export default {
     },
     getButtonText: function () {
       if(this.hideDateInButton || !this.appliedStart) {
-        return this.buttonLabel || this.$t('select')
+        return this.buttonLabel || this.getTranlation('select')
       }else {
         return this.formatDateToText( this.appliedStart, this.appliedEnd)
       }
     },
     getMessage: function () {
       if(!this.showDateText) {
-        return this.$t('instructions')
+        return this.getTranlation('instructions')
       }else {
         return this.formatDateToText( this.selectedDate.start, this.selectedDate.end)
       }

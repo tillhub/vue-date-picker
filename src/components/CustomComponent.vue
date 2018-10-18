@@ -1,14 +1,14 @@
 <template>
   <el-row>
     <el-row type="flex" justify="space-between" align="middle">
-      <h3>{{ $t("custom") }}</h3>
+      <h3>{{ getTranlation("custom") }}</h3>
       <el-switch v-model="showCustom" active-color="#50e3c1">
       </el-switch>
     </el-row>
     <el-row :class="{'hide': !showCustom}">
       <el-row type="flex" class="p-xs" align="middle">
         <el-checkbox :value="lastCheck" name="lastCheck" @change="checkedBox"></el-checkbox>
-          <span class="check-lable">{{ $t("last") }}</span>
+          <span class="check-lable">{{ getTranlation("last") }}</span>
           <el-input-number 
             size="mini" 
             v-model="lastInput"
@@ -27,7 +27,7 @@
           <el-option
             v-for="item in dateUnits"
             :key="item"
-            :label="$t(item)"
+            :label="getTranlation(item)"
             :value="item">
           </el-option>
         </el-select>
@@ -51,35 +51,37 @@
           <el-option
             v-for="item in dateUnits"
             :key="item"
-            :label="$t(item)"
+            :label="getTranlation(item)"
             :value="item">
           </el-option>
         </el-select>
-        <span class="check-lable">{{ $t("since") }}</span>
+        <span class="check-lable">{{ getTranlation("since") }}</span>
         <el-date-picker
           v-model="sinceDateTime"
           class="time-picker"
           size="mini"
           type="datetime"
           default-time="12:00:00"
-          :placeholder="$t('selectDateAndTime')"
+          :placeholder="getTranlation('selectDateAndTime')"
           @focus="checkSince"
           @change="applySince">
         </el-date-picker>
       </el-row>
     </el-row>
     <el-row type="flex" class="m-t-md" justify="center">
-        <el-button @click="resetDefault">{{ $t("reset") }}</el-button>
-        <el-button type="primary" @click="applyAction">{{ $t("apply") }}</el-button>
+        <el-button @click="resetDefault">{{ getTranlation("reset") }}</el-button>
+        <el-button type="primary" @click="applyAction">{{ getTranlation("apply") }}</el-button>
     </el-row>
   </el-row>
 </template>
 
 <script>
+import en from '../i18n/en.json'
+import de from '../i18n/de.json'
 
 export default {
   name: 'CustomComponent',
-  props: ['initCustomToggle', 'sinceCheck', 'lastCheck'],
+  props: ['initCustomToggle', 'sinceCheck', 'lastCheck', 'locale'],
   data () {
     return {
       showCustom: this.initCustomToggle,
@@ -92,6 +94,22 @@ export default {
     }
   },
   methods: {
+    getTranlation: function (key) {
+      if(this.getLocale() == 'en'){
+        return en[key]
+      }else {
+        return de[key]
+      }
+    },
+    getLocale: function () {
+      let locale = this.locale || this.$i18n.locale || 'en'
+      locale = locale.substring(0, 2).toLowerCase()
+      if(locale == 'en' || locale == 'de'){
+        return locale
+      }else {
+        return 'en'
+      }
+    },
     updateCalenderDates: function (start, end) {
       this.$emit('update-calendar', start, end)
       this.$emit('clear-options')

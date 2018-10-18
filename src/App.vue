@@ -1,6 +1,6 @@
 <template>
   <VueDatePicker 
-    locale="en"
+    locale="de"
     tintColor="#357ebd"
     buttonLabel="All Time"
     buttonWidth="auto"

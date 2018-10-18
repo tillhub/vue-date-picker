@@ -1,14 +1,6 @@
 import { storiesOf } from '@storybook/vue';
-import MyButton from './MyButton.vue';
 import Welcome from './Welcome.vue';
 import VueDatePicker from '../src/components/VueDatePicker.vue';
-import VueI18n from 'vue-i18n'
-
-storiesOf('Button', module)
-  .add('story as a component', () => ({
-    components: { MyButton },
-    template: '<my-button :rounded="true">rounded</my-button>'
-  }));
 
 storiesOf('Welcome', module).add('to Storybook', () => ({
   components: { Welcome },
@@ -16,10 +8,11 @@ storiesOf('Welcome', module).add('to Storybook', () => ({
 }));
 
 storiesOf('VueDatePicker', module)
-  .add('basic', () => ({
+  .add('en locale', () => ({
     components: { VueDatePicker },
-    template: '<vue-date-picker/>',
-    i18n: new VueI18n({
-      locale: 'de',
-    })
+    template: '<vue-date-picker/>'
+  }))
+  .add('de locale', () => ({
+    components: { VueDatePicker },
+    template: '<vue-date-picker locale="de"/>'
   }))
