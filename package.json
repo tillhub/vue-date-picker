@@ -1,10 +1,16 @@
 {
-  "name": "vue-date-picker",
+  "name": "@tillhub/vue-date-picker",
   "version": "1.0.0",
   "description": "vue date pick",
   "author": "Jessica Kellogg",
   "private": true,
-  "main": " ddist/vue-date-picker.common.js",
+  "main": "./dist/vue-date-picker.common.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

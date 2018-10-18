@@ -104,14 +104,6 @@ export default {
     initCustomToggle: {
       type: Boolean,
       default: true
-    },
-    start: {
-      type: Object,
-      default: null
-    },
-    end: {
-      type: Object,
-      default: null
     }
   },
   mounted() {
@@ -184,7 +176,11 @@ export default {
     applyAction: function () {
       this.appliedStart = this.selectedDate.start
       this.appliedEnd = this.selectedDate.end
-      this.$emit('getDates', this.appliedStart, this.appliedEnd)
+      const dates = {
+        start: this.selectedDate.start,
+        end: this.selectedDate.end
+      }
+      this.$emit('getDates', dates )
       this.visableBox = false
     },
     clearShortCutButton() {

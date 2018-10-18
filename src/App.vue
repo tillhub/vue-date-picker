@@ -7,8 +7,6 @@
     :hideDateInButton="false"
     :showTime="false"
     :initCustomToggle="true"
-    :start="null"
-    :end="null"
     @getDates="printTheDate"/>
 </template>
 
@@ -22,8 +20,8 @@ export default {
     VueDatePicker
   },
   methods: {
-    printTheDate(selected){
-      console.log("I gots the dates! ", selected)
+    printTheDate(dates){
+      console.log("I gots the dates! ", dates.start, " to ", dates.end)
     }
   },
 }
