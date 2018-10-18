@@ -41,7 +41,14 @@
 <script>
 import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css'
+import enLocale from 'element-ui/lib/locale/lang/en'
+import deLocale from 'element-ui/lib/locale/lang/de'
+import ElementLocale from 'element-ui/lib/locale'
+import VueI18n from 'vue-i18n'
+import en from '../i18n/en.json'
+import de from '../i18n/de.json'
 require('typeface-lato')
+
 import { Popover, Button, Row, Col, Switch,  Checkbox,  InputNumber,  Select,  Option,  DatePicker} from 'element-ui';
 Vue.use(Popover)
 Vue.use(Button)
@@ -53,6 +60,7 @@ Vue.use(InputNumber)
 Vue.use(Select) 
 Vue.use(Option) 
 Vue.use(DatePicker)
+Vue.use(VueI18n)
 
 import ShortCutButtons from './ShortCutButtons.vue'
 import CustomComponent from './CustomComponent.vue'
@@ -63,12 +71,11 @@ export default {
   components: {
     ShortCutButtons,
     CustomComponent,
-    DateRangePicker
+    DateRangePicker,
   },
   props: {
     locale: {
-      type: String,
-      default: 'en'
+      type: String
     },
     tintColor: {
       type: String,
@@ -102,10 +109,21 @@ export default {
       default: null
     }
   },
+  beforeCreate(){
+    this.$i18n.mergeLocaleMessage('en', {...en})
+    this.$i18n.mergeLocaleMessage('de', {...de })
+  },
   mounted() {
-    if(this.locale === 'de'){
-      this.$i18n.locale = 'de'
-    }
+    const locale = this.getLocale()
+    this.$i18n.locale = locale
+    const i18n = new VueI18n({
+      locale: locale,
+      messages: {
+        'en': {...enLocale, ...en},
+        'de': { ...deLocale, ...de }
+      }
+    })
+    ElementLocale.i18n((key, value) => i18n.t(key, value))
   },
   data () {
     return {
@@ -127,6 +145,15 @@ export default {
     }
   },
   methods: {
+    getLocale: function () {
+      let locale = this.locale || this.$i18n.locale || 'en'
+      locale = locale.substring(0, 2).toLowerCase()
+      if(locale == 'en' || locale == 'de'){
+        return locale
+      }else {
+        return 'en'
+      }
+    },
     showBox: function () {
        this.visableBox = true
     },
