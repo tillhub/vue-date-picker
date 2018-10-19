@@ -49,7 +49,7 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 import deLocale from 'element-ui/lib/locale/lang/de'
 import ElementLocale from 'element-ui/lib/locale'
 import VueI18n from 'vue-i18n'
-require('typeface-lato')
+import 'typeface-lato'
 
 import { Popover, Button, Row, Col, Switch,  Checkbox,  InputNumber,  Select,  Option,  DatePicker} from 'element-ui';
 Vue.use(Popover)

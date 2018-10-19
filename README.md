@@ -51,15 +51,15 @@ export default {
 
 The components accepts optional properties.
 
-| Property          | type    | required | example             | default      | description                                                                |
-| ----------------- | ------  | -------- | --------------------| ------------ | -------------------------------------------------------------------------- |
-| locale            | string  | no       | "de" or "en"        | "en"         | Currently only German and English is supported. Only 'de' and 'en ' are    |
-| tintColor         | string  | no       | "#50e3c1"           | "#357ebd"    | This allows customized color of the highlighted date range on the calender |
-| buttonLabel       | string  | no       | "All Time"          | "Select"     | Customized Button Lable to override default                                |
-| buttonWidth       | string  | no       | "100px"             | "auto"       | Overrides the button width, but default it adjust to content               |
-| :hideDateInButton | boolean | no       | true                | false        | Overrides the applied date being showed in place of Button label           |
-| :showTime         | boolean | no       | false               | true         | Overrides the time being shown next to the date                            |
-| :initCustomToggle | boolean | no       | false               | true         | Activates or de-activate Custom toggle at the bottom on inital open        |
+| Property          | type    | required | example      | default   | description                                                                |
+| ----------------- | ------  | -------- | ------------ | --------- | -------------------------------------------------------------------------- |
+| locale            | string  | no       | "de" or "en" | "en"      | Currently only German and English is supported. Only 'de' and 'en '        |
+| tintColor         | string  | no       | "#50e3c1"    | "#357ebd" | This allows customized color of the highlighted date range on the calender |
+| buttonLabel       | string  | no       | "All Time"   | "Select"  | Customized Button Lable to override default                                |
+| buttonWidth       | string  | no       | "100px"      | "auto"    | Overrides the button width, but default it adjust to content               |
+| :hideDateInButton | boolean | no       | true         | false     | Overrides the applied date being showed in place of Button label           |
+| :showTime         | boolean | no       | false        | true      | Overrides the time being shown next to the date                            |
+| :initCustomToggle | boolean | no       | false        | true      | Activates or de-activate Custom toggle at the bottom on inital open        |
 
 ### Event
 The Date picker with only return the selected date from the component when the Applied button is clicked. It will return an object { start: new Date(), end: new Date()} with a start and an end key. The dates will be in a javascript date object see https://www.w3schools.com/js/js_dates.asp.
