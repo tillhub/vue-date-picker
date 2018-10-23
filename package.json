@@ -1,9 +1,9 @@
 {
   "name": "@tillhub/vue-date-picker",
-  "version": "1.0.0",
-  "description": "vue date pick",
-  "author": "Jessica Kellogg",
-  "private": true,
+  "version": "0.1.0",
+  "description": "Extended Vue date picker based on Element-UI.",
+  "author": "Jessica Kellogg <jmy.kellogg@gmial.com>",
+  "private": false,
   "main": "./dist/vue-date-picker.common.js",
   "files": [
     "dist/*",
@@ -15,13 +15,18 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build": "node build/build.js"
+    "build:lib": "vue-cli-service build --target lib --name vue-date-picker src/components/VueDatePicker.vue",
+    "build:app": "node build/build.js",
+    "build": "npm run build:lib",
+    "clean": "rimraf dist"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.2"
   },
   "dependencies": {
     "element-ui": "^2.3.6",
     "typeface-lato": "0.0.54",
     "v-calendar": "^0.9.7",
-    "vue": "^2.5.2",
     "vue-i18n": "^8.2.1"
   },
   "devDependencies": {
@@ -54,6 +59,7 @@
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^1.1.2",
+    "vue": "^2.5.17",
     "vue-loader": "^14.2.2",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
@@ -67,8 +73,8 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
+    "> 2%",
     "last 2 versions",
-    "not ie <= 8"
+    "not ie <= 9"
   ]
 }
