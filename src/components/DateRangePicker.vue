@@ -7,28 +7,43 @@
     is-linked
     update-on-input
     :value="selectedDate"
-    :fromPage="fromPage"
+    :from-page="fromPage"
     :pane-width="200"
     :theme-styles="themeStyles"
-    @input="selectCalenderFromGui">
-  </v-date-picker>
+    @input="selectCalenderFromGui"/>
 </template>
 
 <script>
 import Vue from 'vue'
-import VCalendar from 'v-calendar'
-import { setupCalendar } from 'v-calendar'
+import VCalendar, { setupCalendar } from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css'
 Vue.use(VCalendar)
 
 export default {
   name: 'DateRangePicker',
-  props: ['locale', 'tintColor', 'selectedDate', 'fromPage'],
+  props: {
+    locale: {
+      type: String,
+      required: true
+    },
+    tintColor: {
+      type: String,
+      required: true
+    },
+    selectedDate: {
+      type: Object,
+      required: true
+    },
+    fromPage: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
       themeStyles: {
-        wrapper: { 
-          backgroundColor: 'white', 
+        wrapper: {
+          backgroundColor: 'white',
           border: 'none',
           color: 'black'
         },
@@ -46,24 +61,24 @@ export default {
       this.$emit('clear-options')
     },
     getButtonText: function () {
-      if(this.hideDateInButton || !this.appliedStart) {
+      if (this.hideDateInButton || !this.appliedStart) {
         return this.buttonLabel || this.$t('select')
-      }else {
+      } else {
         return this.buttonText(this.showTime)
       }
     },
     getMessage: function () {
-      if(!this.showDateText) {
+      if (!this.showDateText) {
         return this.$t('instructions')
-      }else {
+      } else {
         return this.dateText(this.showTime)
       }
     }
   },
-  created() {
+  created () {
     setupCalendar({
       locale: this.locale,
-      datePickerShowDayPopover: false, 
+      datePickerShowDayPopover: false,
       formats: {
         title: 'MMMM YYYY',
         weekdays: 'WW',
@@ -72,7 +87,7 @@ export default {
         dayPopover: 'L',
         data: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD']
       }
-    });
+    })
   }
 }
 </script>

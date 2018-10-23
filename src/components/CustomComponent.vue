@@ -1,26 +1,36 @@
 <template>
   <el-row>
-    <el-row type="flex" justify="space-between" align="middle">
+    <el-row
+      type="flex"
+      justify="space-between"
+      align="middle">
       <h3>{{ getTranlation("custom") }}</h3>
-      <el-switch v-model="showCustom" active-color="#50e3c1">
-      </el-switch>
+      <el-switch
+        v-model="showCustom"
+        active-color="#50e3c1"/>
     </el-row>
+
     <el-row :class="{'hide': !showCustom}">
-      <el-row type="flex" class="p-xs" align="middle">
-        <el-checkbox :value="lastCheck" name="lastCheck" @change="checkedBox"></el-checkbox>
-          <span class="check-lable">{{ getTranlation("last") }}</span>
-          <el-input-number 
-            size="mini" 
-            v-model="lastInput"
-            class="num-input"
-            @focus="checkLast"
-            @change="applyLast"
-            :controls=false>
-          </el-input-number>
-        <el-select 
-          v-model="lastDropdown" 
-          class="select-dropdown" 
-          placeholder="select" 
+      <el-row
+        type="flex"
+        class="p-xs"
+        align="middle">
+        <el-checkbox
+          :value="lastCheck"
+          name="lastCheck"
+          @change="checkedBox"/>
+        <span class="check-lable">{{ getTranlation("last") }}</span>
+        <el-input-number
+          size="mini"
+          v-model="lastInput"
+          class="num-input"
+          @focus="checkLast"
+          @change="applyLast"
+          :controls="false"/>
+        <el-select
+          v-model="lastDropdown"
+          class="select-dropdown"
+          placeholder="select"
           size="mini"
           @focus="checkLast"
           @change="applyLast">
@@ -28,23 +38,28 @@
             v-for="item in dateUnits"
             :key="item"
             :label="getTranlation(item)"
-            :value="item">
-          </el-option>
+            :value="item"/>
         </el-select>
       </el-row>
-      <el-row type="flex" class="p-xs" align="middle">
-       <el-checkbox :value="sinceCheck" name="sinceCheck" @change="checkedBox"></el-checkbox>
-          <el-input-number 
-            size="mini" 
-            v-model="sinceInput"
-            class="num-input"
-            @focus="checkSince"
-            :controls=false>
-          </el-input-number>
-        <el-select 
-          v-model="sinceDropdown" 
-          class="select-dropdown" 
-          placeholder="years" 
+
+      <el-row
+        type="flex"
+        class="p-xs"
+        align="middle">
+        <el-checkbox
+          :value="sinceCheck"
+          name="sinceCheck"
+          @change="checkedBox"/>
+        <el-input-number
+          size="mini"
+          v-model="sinceInput"
+          class="num-input"
+          @focus="checkSince"
+          :controls="false"/>
+        <el-select
+          v-model="sinceDropdown"
+          class="select-dropdown"
+          placeholder="years"
           size="mini"
           @focus="checkSince"
           @change="applySince">
@@ -52,8 +67,7 @@
             v-for="item in dateUnits"
             :key="item"
             :label="getTranlation(item)"
-            :value="item">
-          </el-option>
+            :value="item"/>
         </el-select>
         <span class="check-lable">{{ getTranlation("since") }}</span>
         <el-date-picker
@@ -64,13 +78,18 @@
           default-time="12:00:00"
           :placeholder="getTranlation('selectDateAndTime')"
           @focus="checkSince"
-          @change="applySince">
-        </el-date-picker>
+          @change="applySince"/>
       </el-row>
     </el-row>
-    <el-row type="flex" class="m-t-md" justify="center">
-        <el-button @click="resetDefault">{{ getTranlation("reset") }}</el-button>
-        <el-button type="primary" @click="applyAction">{{ getTranlation("apply") }}</el-button>
+
+    <el-row
+      type="flex"
+      class="m-t-md"
+      justify="center">
+      <el-button @click="resetDefault">{{ getTranlation("reset") }}</el-button>
+      <el-button
+        type="primary"
+        @click="applyAction">{{ getTranlation("apply") }}</el-button>
     </el-row>
   </el-row>
 </template>
@@ -81,7 +100,24 @@ import de from '../i18n/de.json'
 
 export default {
   name: 'CustomComponent',
-  props: ['initCustomToggle', 'sinceCheck', 'lastCheck', 'locale'],
+  props: {
+    initCustomToggle: {
+      type: Boolean,
+      required: true
+    },
+    sinceCheck: {
+      type: Boolean,
+      required: true
+    },
+    lastCheck: {
+      type: Boolean,
+      required: true
+    },
+    locale: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       showCustom: this.initCustomToggle,
@@ -95,18 +131,18 @@ export default {
   },
   methods: {
     getTranlation: function (key) {
-      if(this.getLocale() == 'en'){
+      if (this.getLocale() === 'en') {
         return en[key]
-      }else {
+      } else {
         return de[key]
       }
     },
     getLocale: function () {
       let locale = this.locale || this.$i18n.locale || 'en'
       locale = locale.substring(0, 2).toLowerCase()
-      if(locale == 'en' || locale == 'de'){
+      if (locale === 'en' || locale === 'de') {
         return locale
-      }else {
+      } else {
         return 'en'
       }
     },
@@ -118,12 +154,12 @@ export default {
       this.$emit('apply-action')
     },
     checkedBox: function (boolean, event) {
-      if(boolean){
-        if(event.target.name === "lastCheck"){
-            this.checkLast()
+      if (boolean) {
+        if (event.target.name === 'lastCheck') {
+          this.checkLast()
           this.applyLast()
-        }else if(event.target.name === "sinceCheck"){
-            this.checkSince()
+        } else if (event.target.name === 'sinceCheck') {
+          this.checkSince()
           this.applySince()
         }
       }
@@ -135,27 +171,27 @@ export default {
       this.$emit('update-checks', false, true)
     },
     applyLast: function () {
-      if(this.lastInput && this.lastDropdown){
-        if(this.lastDropdown === 'days'){
+      if (this.lastInput && this.lastDropdown) {
+        if (this.lastDropdown === 'days') {
           this.setByDays(this.lastInput)
-        }else if(this.lastDropdown === 'weeks') {
+        } else if (this.lastDropdown === 'weeks') {
           this.setByWeeks(this.lastInput)
-        }else if(this.lastDropdown === 'months') {
+        } else if (this.lastDropdown === 'months') {
           this.setByMonths(this.lastInput)
-        }else if(this.lastDropdown === 'years') {
+        } else if (this.lastDropdown === 'years') {
           this.setByYears(this.lastInput)
         }
       }
     },
-    applySince: function (){
-      if(this.sinceInput && this.sinceDropdown && this.sinceDateTime){
-        if(this.sinceDropdown === 'days'){
+    applySince: function () {
+      if (this.sinceInput && this.sinceDropdown && this.sinceDateTime) {
+        if (this.sinceDropdown === 'days') {
           this.setByDays(this.sinceInput, this.sinceDateTime)
-        }else if(this.sinceDropdown === 'weeks') {
+        } else if (this.sinceDropdown === 'weeks') {
           this.setByWeeks(this.sinceInput, this.sinceDateTime)
-        }else if(this.sinceDropdown === 'months') {
+        } else if (this.sinceDropdown === 'months') {
           this.setByMonths(this.sinceInput, this.sinceDateTime)
-        }else if(this.sinceDropdown === 'years') {
+        } else if (this.sinceDropdown === 'years') {
           this.setByYears(this.sinceInput, this.sinceDateTime)
         }
       }
@@ -186,13 +222,13 @@ export default {
     },
     setByMonths: function (num, inputDate) {
       let date = inputDate ? new Date(inputDate) : new Date()
-      const start = new Date(date.getFullYear(), date.getMonth() - num,  date.getDate())
+      const start = new Date(date.getFullYear(), date.getMonth() - num, date.getDate())
       const end = date
       this.updateCalenderDates(start, end)
     },
     setByYears: function (num, inputDate) {
       let date = inputDate ? new Date(inputDate) : new Date()
-      const start =  new Date(date.getFullYear() - num, date.getDate())
+      const start = new Date(date.getFullYear() - num, date.getDate())
       const end = date
       this.updateCalenderDates(start, end)
     }
@@ -201,7 +237,6 @@ export default {
 </script>
 
 <style scoped>
-
 input,
 select,
 textarea,

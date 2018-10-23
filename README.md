@@ -16,7 +16,7 @@ npm run storybook
 ```
 
 <template>
-  <VueDatePicker 
+  <vue-date-picker
     locale="de"
     tintColor="#357ebd"
     buttonLabel="All Time"
@@ -24,7 +24,7 @@ npm run storybook
     :hideDateInButton="false"
     :showTime="false"
     :initCustomToggle="true"
-    @getDates="printTheDate"/>
+    @get-dates="printTheDate"/>
 </template>
 
 <script>
@@ -52,7 +52,7 @@ export default {
 The components accepts optional properties.
 
 | Property          | type    | required | example      | default   | description                                                                |
-| ----------------- | ------  | -------- | ------------ | --------- | -------------------------------------------------------------------------- |
+|:------------------|:--------|:---------|:-------------|:----------|:---------------------------------------------------------------------------|
 | locale            | string  | no       | "de" or "en" | "en"      | Currently only German and English is supported. Only 'de' and 'en '        |
 | tintColor         | string  | no       | "#50e3c1"    | "#357ebd" | This allows customized color of the highlighted date range on the calender |
 | buttonLabel       | string  | no       | "All Time"   | "Select"  | Customized Button Lable to override default                                |
@@ -64,11 +64,11 @@ The components accepts optional properties.
 ### Event
 The Date picker with only return the selected date from the component when the Applied button is clicked. It will return an object { start: new Date(), end: new Date()} with a start and an end key. The dates will be in a javascript date object see https://www.w3schools.com/js/js_dates.asp.
 
-| Event     | type     | example              | default | description                                                                                                                    |
-| --------- | -------- | -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
-| @getDates | fuction  | (selected dates)=>{} | n/a     | Passes the selected dates when the applied button is clicked and will return an object  { start: new Date(), end: new Date()}  |
+| Event      | type    | example              | default | description                                                                                                                   |
+|:-----------|:--------|:---------------------|:--------|:------------------------------------------------------------------------------------------------------------------------------|
+| @get-dates | fuction | (selected dates)=>{} | n/a     | Passes the selected dates when the applied button is clicked and will return an object  { start: new Date(), end: new Date()} |
 
 
 ## License
 
-MIT © [qtotuan](https://github.com/qtotuan) 
+MIT © [qtotuan](https://github.com/qtotuan)

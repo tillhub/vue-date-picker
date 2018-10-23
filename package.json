@@ -12,12 +12,14 @@
     "*.js"
   ],
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "npm run serve",
     "start": "npm run dev",
+    "serve": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build:lib": "vue-cli-service build --target lib --name vue-date-picker src/components/VueDatePicker.vue",
     "build:app": "node build/build.js",
-    "build": "npm run build:lib",
+    "build": "npm run clean && npm run build:lib",
     "clean": "rimraf dist"
   },
   "peerDependencies": {
@@ -31,6 +33,10 @@
   },
   "devDependencies": {
     "@storybook/vue": "^3.4.11",
+    "@vue/cli-plugin-babel": "^3.0.4",
+    "@vue/cli-plugin-eslint": "^3.0.4",
+    "@vue/cli-service": "^3.0.4",
+    "@vue/eslint-config-standard": "^3.0.5",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -62,7 +68,7 @@
     "vue": "^2.5.17",
     "vue-loader": "^14.2.2",
     "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.5.2",
+    "vue-template-compiler": "^2.5.17",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
@@ -71,10 +77,5 @@
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
-  },
-  "browserslist": [
-    "> 2%",
-    "last 2 versions",
-    "not ie <= 9"
-  ]
+  }
 }

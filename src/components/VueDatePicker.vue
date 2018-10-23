@@ -1,45 +1,45 @@
 <template>
-<div id="vueDatePicker">
-  <el-popover
-    placement="bottom"
-    trigger="click"
-    :value="visableBox">
+  <div id="vueDatePicker">
+    <el-popover
+      placement="bottom"
+      trigger="click"
+      :value="visableBox">
       <div class="p-sm">
         <div>
           <h3>{{ getMessage() }}</h3>
         </div>
-        <DateRangePicker 
-        :tintColor="tintColor"
-        :locale="locale"
-        :selectedDate="selectedDate"
-        :fromPage="fromPage"
-        @update-calendar="updateCalendar"
-        @clear-options="clearOptions"/>
+        <DateRangePicker
+          :tint-color="tintColor"
+          :locale="locale"
+          :selected-date="selectedDate"
+          :from-page="fromPage"
+          @update-calendar="updateCalendar"
+          @clear-options="clearOptions"/>
         <ShortCutButtons
           :locale="locale"
-          :shortCutButton="shortCutButton"
+          :short-cut-button="shortCutButton"
           @update-short-cut="updateShortCut"
           @update-calendar="updateCalendar"/>
         <CustomComponent
           :locale="locale"
-          :lastCheck ="lastCheck"
-          :sinceCheck="sinceCheck"
-          :initCustomToggle="initCustomToggle"
-          @apply-action="applyAction" 
+          :last-check ="lastCheck"
+          :since-check="sinceCheck"
+          :init-custom-toggle="initCustomToggle"
+          @apply-action="applyAction"
           @update-calendar="updateCalendar"
           @clear-options="clearShortCutButton"
           @update-checks="updateChecks"
           @reset-default="resetDefault"/>
       </div>
-    <el-button 
-      slot="reference" 
-      icon="el-icon-date"
-      :style="buttonStyle"
-      @click="showBox">
-      {{ getButtonText() }}
-    </el-button>
-  </el-popover>
-</div>
+      <el-button
+        slot="reference"
+        icon="el-icon-date"
+        :style="buttonStyle"
+        @click="showBox">
+        {{ getButtonText() }}
+      </el-button>
+    </el-popover>
+  </div>
 </template>
 
 <script>
@@ -51,31 +51,31 @@ import ElementLocale from 'element-ui/lib/locale'
 import VueI18n from 'vue-i18n'
 import 'typeface-lato'
 
-import { Popover, Button, Row, Col, Switch,  Checkbox,  InputNumber,  Select,  Option,  DatePicker} from 'element-ui';
-Vue.use(Popover)
-Vue.use(Button)
-Vue.use(Row)
-Vue.use(Col)
-Vue.use(Switch) 
-Vue.use(Checkbox) 
-Vue.use(InputNumber) 
-Vue.use(Select) 
-Vue.use(Option) 
-Vue.use(DatePicker)
-Vue.use(VueI18n)
+import { Popover, Button, Row, Col, Switch, Checkbox, InputNumber, Select, Option, DatePicker } from 'element-ui'
 
 import ShortCutButtons from './ShortCutButtons.vue'
 import CustomComponent from './CustomComponent.vue'
 import DateRangePicker from './DateRangePicker.vue'
 import en from '../i18n/en.json'
 import de from '../i18n/de.json'
+Vue.use(Popover)
+Vue.use(Button)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Switch)
+Vue.use(Checkbox)
+Vue.use(InputNumber)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(DatePicker)
+Vue.use(VueI18n)
 
 export default {
   name: 'VueDatePicker',
   components: {
     ShortCutButtons,
     CustomComponent,
-    DateRangePicker,
+    DateRangePicker
   },
   props: {
     locale: {
@@ -87,7 +87,9 @@ export default {
       default: '#357ebd'
     },
     buttonLabel: {
-      type: String
+      type: String,
+      required: false,
+      default: ''
     },
     hideDateInButton: {
       type: Boolean,
@@ -99,19 +101,19 @@ export default {
     },
     buttonWidth: {
       type: String,
-      default: 'auto' 
+      default: 'auto'
     },
     initCustomToggle: {
       type: Boolean,
       default: true
     }
   },
-  mounted() {
+  mounted () {
     const locale = this.getLocale()
     const i18n = new VueI18n({
       locale: locale,
       messages: {
-        'en': {...enLocale, ...en},
+        'en': { ...enLocale, ...en },
         'de': { ...deLocale, ...de }
       }
     })
@@ -124,7 +126,7 @@ export default {
       },
       visableBox: false,
       appliedStart: null,
-      appliedEnd: null,  
+      appliedEnd: null,
       selectedDate: {
         start: new Date(),
         end: new Date()
@@ -138,23 +140,23 @@ export default {
   },
   methods: {
     getTranlation: function (key) {
-      if(this.getLocale() == 'en'){
+      if (this.getLocale() === 'en') {
         return en[key]
-      }else {
+      } else {
         return de[key]
       }
     },
     getLocale: function () {
       let locale = this.locale
       locale = locale.substring(0, 2).toLowerCase()
-      if(locale == 'en' || locale == 'de'){
+      if (locale === 'en' || locale === 'de') {
         return locale
-      }else {
+      } else {
         return 'en'
       }
     },
     showBox: function () {
-       this.visableBox = true
+      this.visableBox = true
     },
     updateShortCut: function (label) {
       this.shortCutButton = label
@@ -180,26 +182,26 @@ export default {
         start: this.selectedDate.start,
         end: this.selectedDate.end
       }
-      this.$emit('getDates', dates )
+      this.$emit('get-dates', dates)
       this.visableBox = false
     },
-    clearShortCutButton() {
+    clearShortCutButton () {
       if (this.shortCutButton !== null) {
         this.shortCutButton = null
       }
     },
-    clearCheckBoxes() {
+    clearCheckBoxes () {
       if (this.lastCheck) {
         this.lastCheck = false
       } else if (this.sinceCheck) {
         this.sinceCheck = false
       }
     },
-    updateChecks(last, since) {
+    updateChecks (last, since) {
       this.lastCheck = last
       this.sinceCheck = since
     },
-    resetDefault(){
+    resetDefault () {
       this.selectedDate.start = new Date()
       this.selectedDate.end = new Date()
       this.fromPage = {
@@ -209,40 +211,39 @@ export default {
       this.shortCutButton = null
       this.lastCheck = false
       this.sinceCheck = false
-      this.showDateText =  false
+      this.showDateText = false
     },
-    formatDateToText: function (startDate, endDate){
-      const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    formatDateToText: function (startDate, endDate) {
+      const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
       if (this.showTime) {
         options.hour = 'numeric'
         options.minute = 'numeric'
       }
-      const start = startDate.toLocaleDateString(this.locale, options);
-      const end = endDate.toLocaleDateString(this.locale, options);
-      if (start == end) {
+      const start = startDate.toLocaleDateString(this.locale, options)
+      const end = endDate.toLocaleDateString(this.locale, options)
+      if (start === end) {
         return start
       } else {
         return start + ' to ' + end
       }
     },
     getButtonText: function () {
-      if(this.hideDateInButton || !this.appliedStart) {
+      if (this.hideDateInButton || !this.appliedStart) {
         return this.buttonLabel || this.getTranlation('select')
-      }else {
-        return this.formatDateToText( this.appliedStart, this.appliedEnd)
+      } else {
+        return this.formatDateToText(this.appliedStart, this.appliedEnd)
       }
     },
     getMessage: function () {
-      if(!this.showDateText) {
+      if (!this.showDateText) {
         return this.getTranlation('instructions')
-      }else {
-        return this.formatDateToText( this.selectedDate.start, this.selectedDate.end)
+      } else {
+        return this.formatDateToText(this.selectedDate.start, this.selectedDate.end)
       }
     }
   }
 }
 </script>
-
 
 <style>
 input,
