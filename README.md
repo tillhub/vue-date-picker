@@ -9,12 +9,13 @@ npm install --save @tillhub/vue-date-picker
 
 ## Demo
 
+```bash
 npm run storybook
+```
 
 ## Usage
 
-```
-
+```html
 <template>
   <vue-date-picker
     locale="de"
@@ -44,7 +45,6 @@ export default {
   },
 }
 </script>
-
 ```
 
 ### Properties
@@ -62,6 +62,7 @@ The components accepts optional properties.
 | :initCustomToggle | boolean | no       | false        | true      | Activates or de-activate Custom toggle at the bottom on inital open        |
 
 ### Event
+
 The Date picker with only return the selected date from the component when the Applied button is clicked. It will return an object { start: new Date(), end: new Date()} with a start and an end key. The dates will be in a javascript date object see https://www.w3schools.com/js/js_dates.asp.
 
 | Event      | type    | example              | default | description                                                                                                                   |
