@@ -1,4 +1,4 @@
-# @tillhub/vue-date-picker
+# @tillhub/vue-date-picker [![CircleCI](https://circleci.com/gh/tillhub/vue-date-picker/tree/master.svg?style=svg)](https://circleci.com/gh/tillhub/vue-date-picker/tree/master)
 > A date picker that allows user to select a range, quick pick dates, and select custom ranges
 
 ## Install
