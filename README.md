@@ -68,7 +68,6 @@ The Date picker with only return the selected date from the component when the A
 |:-----------|:--------|:---------------------|:--------|:------------------------------------------------------------------------------------------------------------------------------|
 | @get-dates | fuction | (selected dates)=>{} | n/a     | Passes the selected dates when the applied button is clicked and will return an object  { start: new Date(), end: new Date()} |
 
-
 ## License
 
 MIT © [qtotuan](https://github.com/qtotuan)
