@@ -16,7 +16,10 @@
     "build:lib": "vue-cli-service build --target lib --name vue-date-picker src/components/VueDatePicker.vue",
     "build": "npm run clean && npm run build:lib",
     "clean": "rimraf dist",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "semantic-release": "semantic-release",
+    "precommit": "git add",
+    "commit": "npm run precommit && git-cz"
   },
   "dependencies": {
     "typeface-lato": "0.0.54",
@@ -32,9 +35,50 @@
     "@vue/cli-plugin-eslint": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
     "@vue/eslint-config-standard": "^3.0.5",
+    "commitizen": "^2.10.1",
+    "conventional-changelog-cli": "^2.0.5",
+    "cz-conventional-changelog": "^2.1.0",
     "element-ui": "^2.3.6",
     "vue-template-compiler": "^2.5.17",
     "vue": "^2.5.2",
-    "rimraf": "^2.6.0"
+    "gh-pages": "^1.2.0",
+    "rimraf": "^2.6.0",
+    "semantic-release": "^15.9.17",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/npm",
+      "@semantic-release/changelog",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "dist",
+          "package.json",
+          "package-lock.json",
+          "src",
+          "CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   }
 }
