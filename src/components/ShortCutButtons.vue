@@ -161,7 +161,7 @@ export default {
 .goToButton {
   padding: 5px;
   display: block;
-  margin-left: 0px;
+  margin-left: 0px !important;
   color: #a7abb0;
 }
 

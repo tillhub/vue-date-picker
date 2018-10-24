@@ -106,6 +106,21 @@ export default {
     initCustomToggle: {
       type: Boolean,
       default: true
+    },
+    dateRange: {
+      type: Object,
+      validator: function (input) {
+        const startIsDate = input.start instanceof Date
+        const endIsDate = input.end instanceof Date
+        return startIsDate && endIsDate
+      },
+      default: function () {
+        return {
+          start: new Date(),
+          end: new Date(),
+          showDateText: false
+        }
+      }
     }
   },
   mounted () {
@@ -127,15 +142,12 @@ export default {
       visableBox: false,
       appliedStart: null,
       appliedEnd: null,
-      selectedDate: {
-        start: new Date(),
-        end: new Date()
-      },
+      selectedDate: this.getSelectedDate(),
       fromPage: {},
       shortCutButton: null,
       lastCheck: false,
       sinceCheck: false,
-      showDateText: false
+      showDateText: this.dateRange.displayDate
     }
   },
   methods: {
@@ -153,6 +165,14 @@ export default {
         return locale
       } else {
         return 'en'
+      }
+    },
+    getSelectedDate () {
+      const start = this.dateRange.start instanceof Date ? this.dateRange.start : new Date()
+      const end = this.dateRange.end instanceof Date ? this.dateRange.end : new Date()
+      return {
+        start: start,
+        end: end
       }
     },
     showBox: function () {
@@ -213,7 +233,9 @@ export default {
       this.sinceCheck = false
       this.showDateText = false
     },
-    formatDateToText: function (startDate, endDate) {
+    formatDateToText: function (inputStart, inputEnd) {
+      const startDate = inputStart || new Date()
+      const endDate = inputEnd || new Date()
       const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
       if (this.showTime) {
         options.hour = 'numeric'
@@ -228,14 +250,14 @@ export default {
       }
     },
     getButtonText: function () {
-      if (this.hideDateInButton || !this.appliedStart) {
+      if (!this.dateRange.displayDate && (this.hideDateInButton || !this.appliedStart)) {
         return this.buttonLabel || this.getTranlation('select')
       } else {
         return this.formatDateToText(this.appliedStart, this.appliedEnd)
       }
     },
     getMessage: function () {
-      if (!this.showDateText) {
+      if (!this.showDateText || !this.dateRange.displayDate) {
         return this.getTranlation('instructions')
       } else {
         return this.formatDateToText(this.selectedDate.start, this.selectedDate.end)

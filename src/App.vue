@@ -1,28 +1,107 @@
 <template>
-  <vue-date-picker
-    locale="en"
-    tint-color="#357ebd"
-    button-label="All Time"
-    button-width="auto"
-    :hide-date-in-button="false"
-    :show-time="false"
-    :init-custom-toggle="true"
-    @get-dates="printTheDate"/>
+  <div class="examples">
+    <div>
+      <h3>Default</h3>
+      <vue-date-picker/>
+    </div>
+    <div>
+      <h3>German</h3>
+      <div>props:</div>
+      <div>locale="de"</div>
+      <vue-date-picker locale="de"/>
+    </div>
+    <div>
+      <h3>Tint&nbsp;Color</h3>
+      <div>props:</div>
+      <div>tint&#8209;color="#e67382"</div>
+      <vue-date-picker tint-color="#e67382"/>
+    </div>
+    <div>
+      <h3>Button&nbsp;Label</h3>
+      <div>props:</div>
+      <div>button&#8209;label="All&nbsp;Time"</div>
+      <vue-date-picker button-label="All Time"/>
+    </div>
+    <div>
+      <h3>Button&nbsp;Width</h3>
+      <div>props:</div>
+      <div>button&#8209;width="300px"</div>
+      <vue-date-picker button-width="300px"/>
+    </div>
+    <div>
+      <h3>ShowTime</h3>
+      <div>props:</div>
+      <div>:show&#8209;time="false"</div>
+      <vue-date-picker :show-time="false"/>
+    </div>
+    <div>
+      <h3>HideDateInButton</h3>
+      <div>props:</div>
+      <div>:hide&nbsp;date&nbsp;in&nbsp;button="true"</div>
+      <vue-date-picker :hide-date-in-button="true"/>
+    </div>
+    <div>
+      <h3>Inital&nbsp;Status&nbsp;of&nbsp;Custom&nbsp;Toggle</h3>
+      <div>props:</div>
+      <div>:init&nbsp;custom&nbsp;toggle="false"</div>
+      <vue-date-picker :init-custom-toggle="false"/>
+    </div>
+    <div>
+      <h3>Custom</h3>
+      <vue-date-picker
+        locale="en"
+        tint-color="#357ebd"
+        button-label="All Time"
+        button-width="auto"
+        :hide-date-in-button="false"
+        :show-time="false"
+        :init-custom-toggle="false"
+        :date-range="selectedDate"
+        @get-dates="printTheDate"/>
+    </div>
+  </div>
 </template>
 
 <script>
 
 import VueDatePicker from './components/VueDatePicker.vue'
-
+import 'typeface-lato'
 export default {
   name: 'App',
   components: {
     VueDatePicker
   },
+  data () {
+    const date = new Date()
+    return {
+      selectedDate: {
+        start: new Date(date.getFullYear(), date.getMonth(), 1),
+        end: new Date()
+      }
+    }
+  },
   methods: {
     printTheDate (dates) {
-      console.log('I gots the dates! ', dates.start, ' to ', dates.end)
+      this.selectedDate = {
+        start: dates.start,
+        end: dates.end,
+        showDateText: true
+      }
     }
   }
 }
 </script>
+
+<style scoped>
+div {
+  font-family: "Lato";
+}
+
+.examples {
+  margin: 10% 50%;
+}
+
+#vueDatePicker {
+  margin: 20px 0px;
+}
+</style>

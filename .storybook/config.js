@@ -1,6 +1,5 @@
 import { configure } from '@storybook/vue';
 import Vue from 'vue';
-
 import Welcome from '../stories/Welcome.vue';
 import VueDatePicker from '../src/components/VueDatePicker.vue';
 
