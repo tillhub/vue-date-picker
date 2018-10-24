@@ -1,6 +1,6 @@
 {
   "name": "@tillhub/vue-date-picker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extended Vue date picker based on Element-UI.",
   "author": "Jessica Kellogg <jmy.kellogg@gmial.com>",
   "private": false,
