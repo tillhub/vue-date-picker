@@ -59,6 +59,19 @@
         :date-range="selectedDate"
         @get-dates="printTheDate"/>
     </div>
+    <div>
+      <h3>String&nbsp;Input</h3>
+      <vue-date-picker
+        locale="en"
+        tint-color="#357ebd"
+        button-label="All Time"
+        button-width="auto"
+        :hide-date-in-button="false"
+        :show-time="true"
+        :init-custom-toggle="true"
+        :date-range="stringDateRang"
+        @get-dates="setStringDateRange"/>
+    </div>
   </div>
 </template>
 
@@ -73,10 +86,15 @@ export default {
   },
   data () {
     const date = new Date()
+    const start = new Date(date.getFullYear(), date.getMonth(), 1)
     return {
       selectedDate: {
-        start: new Date(date.getFullYear(), date.getMonth(), 1),
+        start: start,
         end: new Date()
+      },
+      stringDateRang: {
+        start: start.toISOString(),
+        end: new Date().toISOString()
       }
     }
   },
@@ -87,6 +105,15 @@ export default {
         end: dates.end,
         showDateText: true
       }
+      console.log(this.selectedDate)
+    },
+    setStringDateRange (dates) {
+      this.stringDateRang = {
+        start: dates.start.toISOString(),
+        end: dates.end.toISOString(),
+        showDateText: true
+      }
+      console.log(this.stringDateRang)
     }
   }
 }

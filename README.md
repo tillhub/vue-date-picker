@@ -60,7 +60,7 @@ The components accepts optional properties.
 | :hide-date-in-button | boolean | no       | true                                                       | false     | Overrides the applied date being showed in place of Button label                                                                                                                                                                                                   |
 | :show-time         | boolean | no       | false                                                      | true      | Overrides the time being shown next to the date                                                                                                                                                                                                                    |
 | :init=custom-toggle | boolean | no       | false                                                      | true      | Activates or de-activate Custom toggle at the bottom on inital open                                                                                                                                                                                                |
-| :date-range       | object  | no       | { start: new Date(), end: new Date(), showDateText: true } | true      | Allows the date-range to be past in. The obejct must include a 'start' and 'end' key with a date value. 'showDateText' (optional) must be a boolean and will over ride the button lable and message above the calender to be the date range. It defaults to false |
+| :date-range       | object  | no       | { start: new Date(), end: "2018-11-13T23:00:00.000Z", showDateText: true } | true      | Allows the date-range to be past in. The obejct must include a 'start' and 'end' key with a date value or an ISO sting. 'showDateText' (optional) must be a boolean and will over ride the button lable and message above the calender to be the date range. It defaults to false |
 
 ### Event
 
@@ -68,7 +68,7 @@ The Date picker with only return the selected date from the component when the A
 
 | Event      | type    | example              | default | description                                                                                                                   |
 |:-----------|:--------|:---------------------|:--------|:------------------------------------------------------------------------------------------------------------------------------|
-| @get-dates | fuction | (selected dates)=>{} | n/a     | Passes the selected dates when the applied button is clicked and will return an object  { start: new Date(), end: new Date()} |
+| @get-dates | fuction | (selected dates)=>{} | n/a     | Passes the selected dates when the applied button is clicked and will return an object  { start: new Date(), end: new Date(), showDateText: true} |
 
 ## License
 
