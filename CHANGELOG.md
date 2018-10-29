@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/tillhub/vue-date-picker/compare/v1.3.0...v1.4.0) (2018-10-29)
+
+
+### Features
+
+* added date-type input, fixed button show input date ([e054db1](https://github.com/tillhub/vue-date-picker/commit/e054db1))
+
 # [1.3.0](https://github.com/tillhub/vue-date-picker/compare/v1.2.0...v1.3.0) (2018-10-29)
 
 
