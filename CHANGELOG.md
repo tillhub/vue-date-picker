@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/tillhub/vue-date-picker/compare/v1.1.0...v1.2.0) (2018-10-29)
+
+
+### Features
+
+* date-range prop input takes string ([e4053a2](https://github.com/tillhub/vue-date-picker/commit/e4053a2))
+
 # [1.1.0](https://github.com/tillhub/vue-date-picker/compare/v1.0.0...v1.1.0) (2018-10-24)
 
 
