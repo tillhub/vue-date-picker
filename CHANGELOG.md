@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/tillhub/vue-date-picker/compare/v1.2.0...v1.3.0) (2018-10-29)
+
+
+### Features
+
+* date passed in is shown in text and button ([b113f01](https://github.com/tillhub/vue-date-picker/commit/b113f01))
+
 # [1.2.0](https://github.com/tillhub/vue-date-picker/compare/v1.1.0...v1.2.0) (2018-10-29)
 
 
