@@ -94,7 +94,8 @@ export default {
       },
       stringDateRang: {
         start: start.toISOString(),
-        end: new Date().toISOString()
+        end: new Date().toISOString(),
+        showDateText: true
       }
     }
   },

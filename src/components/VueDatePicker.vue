@@ -147,7 +147,7 @@ export default {
       shortCutButton: null,
       lastCheck: false,
       sinceCheck: false,
-      showDateText: this.dateRange.displayDate
+      showDateText: this.dateRange.showDateText
     }
   },
   methods: {
@@ -261,14 +261,14 @@ export default {
       }
     },
     getButtonText: function () {
-      if (!this.dateRange.displayDate && (this.hideDateInButton || !this.appliedStart)) {
+      if (!this.dateRange.showDateText && (this.hideDateInButton || !this.appliedStart)) {
         return this.buttonLabel || this.getTranlation('select')
       } else {
         return this.formatDateToText(this.appliedStart, this.appliedEnd)
       }
     },
     getMessage: function () {
-      if (!this.showDateText || !this.dateRange.displayDate) {
+      if (!this.showDateText || !this.dateRange.showDateText) {
         return this.getTranlation('instructions')
       } else {
         return this.formatDateToText(this.selectedDate.start, this.selectedDate.end)
