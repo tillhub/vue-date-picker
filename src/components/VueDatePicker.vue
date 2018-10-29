@@ -107,6 +107,10 @@ export default {
       type: Boolean,
       default: true
     },
+    dateType: {
+      type: 'date' | 'iso',
+      default: 'date'
+    },
     dateRange: {
       type: Object,
       validator: function (input) {
@@ -116,8 +120,8 @@ export default {
       },
       default: function () {
         return {
-          start: new Date(),
-          end: new Date(),
+          start: null,
+          end: null,
           showDateText: false
         }
       }
@@ -140,8 +144,8 @@ export default {
         width: this.buttonWidth
       },
       visableBox: false,
-      appliedStart: null,
-      appliedEnd: null,
+      appliedStart: this.getDateFormat(this.dateRange.start),
+      appliedEnd: this.getDateFormat(this.dateRange.end),
       selectedDate: this.getSelectedDate(),
       fromPage: {},
       shortCutButton: null,
@@ -167,19 +171,19 @@ export default {
         return 'en'
       }
     },
+    getDateFormat (date) {
+      let formattedDate = null
+      if (typeof date === 'string') {
+        formattedDate = new Date(date)
+      } else if (date instanceof Date) {
+        formattedDate = date
+      }
+      return formattedDate
+    },
     getSelectedDate () {
-      let start = new Date()
-      let end = new Date()
-      if (typeof this.dateRange.start === 'string') {
-        start = new Date(this.dateRange.start)
-      } else if (this.dateRange.start instanceof Date) {
-        start = this.dateRange.start
-      }
-      if (typeof this.dateRange.end === 'string') {
-        end = new Date(this.dateRange.end)
-      } else if (this.dateRange.end instanceof Date) {
-        end = this.dateRange.end
-      }
+      let start = this.getDateFormat(this.dateRange.start) || new Date()
+      let end = this.getDateFormat(this.dateRange.end) || new Date()
+
       return {
         start: start,
         end: end
@@ -205,12 +209,21 @@ export default {
       this.clearShortCutButton()
       this.clearCheckBoxes()
     },
+    getEmmitDate: function (date) {
+      if (this.dateType === 'iso') {
+        return date.toISOString()
+      } else {
+        return date
+      }
+    },
     applyAction: function () {
+      const start = this.getEmmitDate(this.selectedDate.start)
+      const end = this.getEmmitDate(this.selectedDate.end)
       this.appliedStart = this.selectedDate.start
       this.appliedEnd = this.selectedDate.end
       const dates = {
-        start: this.selectedDate.start,
-        end: this.selectedDate.end,
+        start: start,
+        end: end,
         showDateText: true
       }
       this.$emit('get-dates', dates)
@@ -261,7 +274,7 @@ export default {
       }
     },
     getButtonText: function () {
-      if (!this.dateRange.showDateText && (this.hideDateInButton || !this.appliedStart)) {
+      if (!this.dateRange.showDateText || (this.hideDateInButton || !this.appliedStart)) {
         return this.buttonLabel || this.getTranlation('select')
       } else {
         return this.formatDateToText(this.appliedStart, this.appliedEnd)

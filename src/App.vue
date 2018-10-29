@@ -66,6 +66,7 @@
         tint-color="#357ebd"
         button-label="All Time"
         button-width="auto"
+        date-type="iso"
         :hide-date-in-button="false"
         :show-time="true"
         :init-custom-toggle="true"
@@ -110,8 +111,8 @@ export default {
     },
     setStringDateRange (dates) {
       this.stringDateRang = {
-        start: dates.start.toISOString(),
-        end: dates.end.toISOString(),
+        start: dates.start,
+        end: dates.end,
         showDateText: true
       }
       console.log(this.stringDateRang)
