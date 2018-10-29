@@ -110,8 +110,8 @@ export default {
     dateRange: {
       type: Object,
       validator: function (input) {
-        const startIsDate = input.start instanceof Date
-        const endIsDate = input.end instanceof Date
+        const startIsDate = input.start instanceof Date || String
+        const endIsDate = input.end instanceof Date || String
         return startIsDate && endIsDate
       },
       default: function () {
@@ -168,8 +168,18 @@ export default {
       }
     },
     getSelectedDate () {
-      const start = this.dateRange.start instanceof Date ? this.dateRange.start : new Date()
-      const end = this.dateRange.end instanceof Date ? this.dateRange.end : new Date()
+      let start = new Date()
+      let end = new Date()
+      if (typeof this.dateRange.start === 'string') {
+        start = new Date(this.dateRange.start)
+      } else if (this.dateRange.start instanceof Date) {
+        start = this.dateRange.start
+      }
+      if (typeof this.dateRange.end === 'string') {
+        end = new Date(this.dateRange.end)
+      } else if (this.dateRange.end instanceof Date) {
+        end = this.dateRange.end
+      }
       return {
         start: start,
         end: end
@@ -200,7 +210,8 @@ export default {
       this.appliedEnd = this.selectedDate.end
       const dates = {
         start: this.selectedDate.start,
-        end: this.selectedDate.end
+        end: this.selectedDate.end,
+        showDateText: true
       }
       this.$emit('get-dates', dates)
       this.visableBox = false
