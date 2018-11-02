@@ -47785,12 +47785,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cb29a978-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueDatePicker.vue?vue&type=template&id=27201168&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"vueDatePicker"}},[_c('el-popover',{attrs:{"placement":"bottom","trigger":"click","value":_vm.visableBox}},[_c('div',{staticClass:"p-sm"},[_c('div',[_c('h3',[_vm._v(_vm._s(_vm.getMessage()))])]),_c('DateRangePicker',{attrs:{"tint-color":_vm.tintColor,"locale":_vm.locale,"selected-date":_vm.selectedDate,"from-page":_vm.fromPage},on:{"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearOptions}}),_c('ShortCutButtons',{attrs:{"locale":_vm.locale,"short-cut-button":_vm.shortCutButton},on:{"update-short-cut":_vm.updateShortCut,"update-calendar":_vm.updateCalendar}}),_c('CustomComponent',{attrs:{"locale":_vm.locale,"last-check":_vm.lastCheck,"since-check":_vm.sinceCheck,"init-custom-toggle":_vm.initCustomToggle},on:{"apply-action":_vm.applyAction,"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearShortCutButton,"update-checks":_vm.updateChecks,"reset-default":_vm.resetDefault}})],1),_c('el-button',{style:(_vm.buttonStyle),attrs:{"slot":"reference","icon":"el-icon-date"},on:{"click":_vm.showBox},slot:"reference"},[_vm._v("\n      "+_vm._s(_vm.getButtonText())+"\n    ")])],1)],1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cb29a978-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueDatePicker.vue?vue&type=template&id=3a3de123&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"vueDatePicker"}},[_c('el-popover',{attrs:{"placement":"bottom","trigger":"click","value":_vm.visableBox}},[_c('div',{staticClass:"p-sm"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('h3',[_vm._v(_vm._s(_vm.getMessage()))])]),_c('DateRangePicker',{attrs:{"tint-color":_vm.tintColor,"locale":_vm.locale,"selected-date":_vm.selectedDate,"from-page":_vm.fromPage},on:{"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearOptions}}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('ShortCutButtons',{attrs:{"locale":_vm.locale,"short-cut-button":_vm.shortCutButton},on:{"update-short-cut":_vm.updateShortCut,"update-calendar":_vm.updateCalendar}}),_c('CustomComponent',{attrs:{"locale":_vm.locale,"last-check":_vm.lastCheck,"since-check":_vm.sinceCheck,"init-custom-toggle":_vm.initCustomToggle},on:{"apply-action":_vm.applyAction,"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearShortCutButton,"update-checks":_vm.updateChecks,"reset-default":_vm.resetDefault}})],1)],1),_c('el-button',{style:(_vm.buttonStyle),attrs:{"slot":"reference","icon":"el-icon-date"},on:{"click":_vm.showBox},slot:"reference"},[_vm._v("\n      "+_vm._s(_vm.getButtonText())+"\n    ")])],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VueDatePicker.vue?vue&type=template&id=27201168&
+// CONCATENATED MODULE: ./src/components/VueDatePicker.vue?vue&type=template&id=3a3de123&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/defineProperty.js
 function _defineProperty(obj, key, value) {
@@ -50142,6 +50142,8 @@ DateRangePicker_component.options.__file = "DateRangePicker.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -50221,6 +50223,10 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
           showDateText: false
         };
       }
+    },
+    simple: {
+      type: Boolean,
+      default: false
     }
   },
   mounted: function mounted() {
@@ -50304,6 +50310,10 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
         month: start.getMonth() + 1,
         year: start.getFullYear()
       };
+
+      if (this.simple) {
+        this.applyAction();
+      }
     },
     clearOptions: function clearOptions() {
       this.clearShortCutButton();
@@ -50327,6 +50337,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
         showDateText: true
       };
       this.$emit('get-dates', dates);
+      this.dateRange.showDateText = true;
       this.visableBox = false;
     },
     clearShortCutButton: function clearShortCutButton() {
@@ -50381,14 +50392,14 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
       }
     },
     getButtonText: function getButtonText() {
-      if (!this.dateRange.showDateText || this.hideDateInButton || !this.appliedStart) {
+      if (this.hideDateInButton || !this.dateRange.showDateText) {
         return this.buttonLabel || this.getTranlation('select');
       } else {
         return this.formatDateToText(this.appliedStart, this.appliedEnd);
       }
     },
     getMessage: function getMessage() {
-      if (!this.showDateText || !this.dateRange.showDateText) {
+      if (!this.showDateText && !this.dateRange.showDateText) {
         return this.getTranlation('instructions');
       } else {
         return this.formatDateToText(this.selectedDate.start, this.selectedDate.end);

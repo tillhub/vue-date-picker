@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/tillhub/vue-date-picker/compare/v1.4.0...v1.5.0) (2018-11-02)
+
+
+### Features
+
+* added simple option fix selection bug ([038dd2c](https://github.com/tillhub/vue-date-picker/commit/038dd2c))
+
 # [1.4.0](https://github.com/tillhub/vue-date-picker/compare/v1.3.0...v1.4.0) (2018-10-29)
 
 
