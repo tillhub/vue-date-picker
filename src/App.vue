@@ -26,7 +26,9 @@
       <h3>Button&nbsp;Width</h3>
       <div>props:</div>
       <div>button&#8209;width="300px"</div>
-      <vue-date-picker button-width="300px"/>
+      <vue-date-picker
+        button-width="300px"
+        :show-time="false"/>
     </div>
     <div>
       <h3>ShowTime</h3>
@@ -39,6 +41,15 @@
       <div>props:</div>
       <div>:hide&nbsp;date&nbsp;in&nbsp;button="true"</div>
       <vue-date-picker :hide-date-in-button="true"/>
+      <vue-date-picker
+        locale="en"
+        tint-color="#357ebd"
+        button-label="All Time"
+        button-width="auto"
+        :hide-date-in-button="true"
+        :show-time="false"
+        :date-range="selectedDate"
+        @get-dates="printTheDate"/>
     </div>
     <div>
       <h3>Inital&nbsp;Status&nbsp;of&nbsp;Custom&nbsp;Toggle</h3>
@@ -73,6 +84,23 @@
         :date-range="stringDateRang"
         @get-dates="setStringDateRange"/>
     </div>
+    <div>
+      <h3>Simple&nbsp;Date&nbsp;Range&nbsp;Picker</h3>
+      <div>props:</div>
+      <div>:simple="true"</div>
+      <vue-date-picker :simple="true"/>
+      <vue-date-picker
+        locale="en"
+        tint-color="#357ebd"
+        button-label="All Time"
+        button-width="auto"
+        :hide-date-in-button="false"
+        :show-time="false"
+        :init-custom-toggle="false"
+        :date-range="selectedDate"
+        :simple="true"
+        @get-dates="printTheDate"/>
+    </div>
   </div>
 </template>
 
@@ -89,10 +117,7 @@ export default {
     const date = new Date()
     const start = new Date(date.getFullYear(), date.getMonth(), 1)
     return {
-      selectedDate: {
-        start: start,
-        end: new Date()
-      },
+      selectedDate: {},
       stringDateRang: {
         start: start.toISOString(),
         end: new Date().toISOString(),
@@ -107,7 +132,6 @@ export default {
         end: dates.end,
         showDateText: true
       }
-      console.log(this.selectedDate)
     },
     setStringDateRange (dates) {
       this.stringDateRang = {
@@ -115,7 +139,6 @@ export default {
         end: dates.end,
         showDateText: true
       }
-      console.log(this.stringDateRang)
     }
   }
 }

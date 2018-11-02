@@ -5,7 +5,7 @@
       trigger="click"
       :value="visableBox">
       <div class="p-sm">
-        <div>
+        <div v-show="!simple">
           <h3>{{ getMessage() }}</h3>
         </div>
         <DateRangePicker
@@ -15,21 +15,23 @@
           :from-page="fromPage"
           @update-calendar="updateCalendar"
           @clear-options="clearOptions"/>
-        <ShortCutButtons
-          :locale="locale"
-          :short-cut-button="shortCutButton"
-          @update-short-cut="updateShortCut"
-          @update-calendar="updateCalendar"/>
-        <CustomComponent
-          :locale="locale"
-          :last-check ="lastCheck"
-          :since-check="sinceCheck"
-          :init-custom-toggle="initCustomToggle"
-          @apply-action="applyAction"
-          @update-calendar="updateCalendar"
-          @clear-options="clearShortCutButton"
-          @update-checks="updateChecks"
-          @reset-default="resetDefault"/>
+        <div v-show="!simple">
+          <ShortCutButtons
+            :locale="locale"
+            :short-cut-button="shortCutButton"
+            @update-short-cut="updateShortCut"
+            @update-calendar="updateCalendar"/>
+          <CustomComponent
+            :locale="locale"
+            :last-check ="lastCheck"
+            :since-check="sinceCheck"
+            :init-custom-toggle="initCustomToggle"
+            @apply-action="applyAction"
+            @update-calendar="updateCalendar"
+            @clear-options="clearShortCutButton"
+            @update-checks="updateChecks"
+            @reset-default="resetDefault"/>
+        </div>
       </div>
       <el-button
         slot="reference"
@@ -125,6 +127,10 @@ export default {
           showDateText: false
         }
       }
+    },
+    simple: {
+      type: Boolean,
+      default: false
     }
   },
   mounted () {
@@ -204,6 +210,9 @@ export default {
         month: start.getMonth() + 1,
         year: start.getFullYear()
       }
+      if (this.simple) {
+        this.applyAction()
+      }
     },
     clearOptions: function () {
       this.clearShortCutButton()
@@ -227,6 +236,7 @@ export default {
         showDateText: true
       }
       this.$emit('get-dates', dates)
+      this.dateRange.showDateText = true
       this.visableBox = false
     },
     clearShortCutButton () {
@@ -274,14 +284,14 @@ export default {
       }
     },
     getButtonText: function () {
-      if (!this.dateRange.showDateText || (this.hideDateInButton || !this.appliedStart)) {
+      if (this.hideDateInButton || !this.dateRange.showDateText) {
         return this.buttonLabel || this.getTranlation('select')
       } else {
         return this.formatDateToText(this.appliedStart, this.appliedEnd)
       }
     },
     getMessage: function () {
-      if (!this.showDateText || !this.dateRange.showDateText) {
+      if (!this.showDateText && !this.dateRange.showDateText) {
         return this.getTranlation('instructions')
       } else {
         return this.formatDateToText(this.selectedDate.start, this.selectedDate.end)
