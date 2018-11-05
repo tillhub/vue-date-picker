@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/tillhub/vue-date-picker/compare/v1.5.0...v1.6.0) (2018-11-05)
+
+
+### Features
+
+* added clearable option ([dd32c7a](https://github.com/tillhub/vue-date-picker/commit/dd32c7a))
+
 # [1.5.0](https://github.com/tillhub/vue-date-picker/compare/v1.4.0...v1.5.0) (2018-11-02)
 
 
