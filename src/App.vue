@@ -55,7 +55,8 @@
       <h3>Inital&nbsp;Status&nbsp;of&nbsp;Custom&nbsp;Toggle</h3>
       <div>props:</div>
       <div>:init&nbsp;custom&nbsp;toggle="false"</div>
-      <vue-date-picker :init-custom-toggle="false"/>
+      <vue-date-picker
+        :init-custom-toggle="false" />
     </div>
     <div>
       <h3>Custom</h3>
@@ -81,14 +82,16 @@
         :hide-date-in-button="false"
         :show-time="true"
         :init-custom-toggle="true"
-        :date-range="stringDateRang"
+        :date-range="stringDateRange"
         @get-dates="setStringDateRange"/>
     </div>
     <div>
       <h3>Simple&nbsp;Date&nbsp;Range&nbsp;Picker</h3>
       <div>props:</div>
       <div>:simple="true"</div>
-      <vue-date-picker :simple="true"/>
+      <vue-date-picker
+        :simple="true"
+        :clearable="true"/>
       <vue-date-picker
         locale="en"
         tint-color="#357ebd"
@@ -97,9 +100,17 @@
         :hide-date-in-button="false"
         :show-time="false"
         :init-custom-toggle="false"
-        :date-range="selectedDate"
+        :date-range="stringDateRange"
         :simple="true"
-        @get-dates="printTheDate"/>
+        :clearable="true"
+        @get-dates="setStringDateRange"/>
+    </div>
+    <div>
+      <h3>Clearable</h3>
+      <div>props:</div>
+      <div>:clearable="true"</div>
+      <vue-date-picker
+        :clearable="true"/>
     </div>
   </div>
 </template>
@@ -118,7 +129,7 @@ export default {
     const start = new Date(date.getFullYear(), date.getMonth(), 1)
     return {
       selectedDate: {},
-      stringDateRang: {
+      stringDateRange: {
         start: start.toISOString(),
         end: new Date().toISOString(),
         showDateText: true
@@ -127,17 +138,19 @@ export default {
   },
   methods: {
     printTheDate (dates) {
+      console.log(dates)
       this.selectedDate = {
         start: dates.start,
         end: dates.end,
-        showDateText: true
+        showDateText: dates.showDateText
       }
     },
     setStringDateRange (dates) {
-      this.stringDateRang = {
+      console.log(dates)
+      this.stringDateRange = {
         start: dates.start,
         end: dates.end,
-        showDateText: true
+        showDateText: dates.showDateText
       }
     }
   }

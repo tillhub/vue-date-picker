@@ -39,6 +39,11 @@
         :style="buttonStyle"
         @click="showBox">
         {{ getButtonText() }}
+        <i
+          class="clearable-date el-icon-error"
+          v-show="showClearable"
+          @click="resetDefault"
+          @click.stop/>
       </el-button>
     </el-popover>
   </div>
@@ -131,6 +136,10 @@ export default {
     simple: {
       type: Boolean,
       default: false
+    },
+    clearable: {
+      type: Boolean,
+      default: false
     }
   },
   mounted () {
@@ -157,7 +166,8 @@ export default {
       shortCutButton: null,
       lastCheck: false,
       sinceCheck: false,
-      showDateText: this.dateRange.showDateText
+      showDateText: this.dateRange.showDateText,
+      showClearable: false
     }
   },
   methods: {
@@ -256,8 +266,11 @@ export default {
       this.sinceCheck = since
     },
     resetDefault () {
+      this.appliedStart = null
+      this.appliedEnd = null
       this.selectedDate.start = new Date()
       this.selectedDate.end = new Date()
+      this.dateRange.showDateText = false
       this.fromPage = {
         month: this.selectedDate.start.getMonth() + 1,
         year: this.selectedDate.start.getFullYear()
@@ -266,6 +279,7 @@ export default {
       this.lastCheck = false
       this.sinceCheck = false
       this.showDateText = false
+      this.$emit('get-dates', {})
     },
     formatDateToText: function (inputStart, inputEnd) {
       const startDate = inputStart || new Date()
@@ -283,10 +297,19 @@ export default {
         return start + ' to ' + end
       }
     },
+    toggleClearable: function (shouldShow) {
+      if (this.clearable && shouldShow) {
+        this.showClearable = true
+      } else {
+        this.showClearable = false
+      }
+    },
     getButtonText: function () {
       if (this.hideDateInButton || !this.dateRange.showDateText) {
+        this.toggleClearable(false)
         return this.buttonLabel || this.getTranlation('select')
       } else {
+        this.toggleClearable(true)
         return this.formatDateToText(this.appliedStart, this.appliedEnd)
       }
     },
@@ -326,6 +349,14 @@ span {
 
 .p-xs {
   padding: 5px;
+}
+
+.clearable-date {
+  padding-left: 8px;
+}
+
+.clearable-date:hover {
+  color: #0760a1;
 }
 
 .m-t-md {
