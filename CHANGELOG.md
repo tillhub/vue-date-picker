@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/tillhub/vue-date-picker/compare/v1.6.0...v1.7.0) (2018-11-21)
+
+
+### Features
+
+* added clear event committer ([d255bf8](https://github.com/tillhub/vue-date-picker/commit/d255bf8))
+
 # [1.6.0](https://github.com/tillhub/vue-date-picker/compare/v1.5.0...v1.6.0) (2018-11-05)
 
 
