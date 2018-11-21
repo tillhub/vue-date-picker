@@ -121,8 +121,8 @@ export default {
     dateRange: {
       type: Object,
       validator: function (input) {
-        const startIsDate = input.start instanceof Date || String
-        const endIsDate = input.end instanceof Date || String
+        const startIsDate = input.start ? (input.start instanceof Date || String) : true
+        const endIsDate = input.end ? (input.end instanceof Date || String) : true
         return startIsDate && endIsDate
       },
       default: function () {
@@ -266,11 +266,11 @@ export default {
       this.sinceCheck = since
     },
     resetDefault () {
+      console.log('**')
       this.appliedStart = null
       this.appliedEnd = null
       this.selectedDate.start = new Date()
       this.selectedDate.end = new Date()
-      this.dateRange.showDateText = false
       this.fromPage = {
         month: this.selectedDate.start.getMonth() + 1,
         year: this.selectedDate.start.getFullYear()
@@ -280,6 +280,8 @@ export default {
       this.sinceCheck = false
       this.showDateText = false
       this.$emit('get-dates', {})
+      this.$emit('clear')
+      this.dateRange.showDateText = false
     },
     formatDateToText: function (inputStart, inputEnd) {
       const startDate = inputStart || new Date()
