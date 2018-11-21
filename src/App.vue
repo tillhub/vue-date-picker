@@ -110,7 +110,8 @@
       <div>props:</div>
       <div>:clearable="true"</div>
       <vue-date-picker
-        :clearable="true"/>
+        :clearable="true"
+        @clear="clearDate"/>
     </div>
   </div>
 </template>
@@ -152,6 +153,10 @@ export default {
         end: dates.end,
         showDateText: dates.showDateText
       }
+    },
+    clearDate () {
+      console.log('clear')
+      this.stringDateRange = {}
     }
   }
 }
