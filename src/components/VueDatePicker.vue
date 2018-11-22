@@ -266,7 +266,6 @@ export default {
       this.sinceCheck = since
     },
     resetDefault () {
-      console.log('**')
       this.appliedStart = null
       this.appliedEnd = null
       this.selectedDate.start = new Date()
