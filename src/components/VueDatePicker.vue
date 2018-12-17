@@ -87,7 +87,7 @@ export default {
   props: {
     locale: {
       type: String,
-      default: 'en'
+      default: navigator.language
     },
     tintColor: {
       type: String,
@@ -236,6 +236,10 @@ export default {
       }
     },
     applyAction: function () {
+      if (this.selectedDate.start.getTime() === this.selectedDate.end.getTime()) {
+        this.selectedDate.start.setHours(0, 0, 0, 0)
+        this.selectedDate.end.setHours(23, 59, 59, 999)
+      }
       const start = this.getEmmitDate(this.selectedDate.start)
       const end = this.getEmmitDate(this.selectedDate.end)
       this.appliedStart = this.selectedDate.start
