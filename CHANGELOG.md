@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/tillhub/vue-date-picker/compare/v1.7.0...v1.8.0) (2018-12-17)
+
+
+### Features
+
+* on same day selection it return start time of 00:00 and end time of 23:59 ([d68d035](https://github.com/tillhub/vue-date-picker/commit/d68d035))
+
 # [1.7.0](https://github.com/tillhub/vue-date-picker/compare/v1.6.0...v1.7.0) (2018-11-21)
 
 
