@@ -196,8 +196,13 @@ export default {
       }
       return formattedDate
     },
+    getDefaultStart () {
+      let start = new Date()
+      start.setHours(0, 0, 0, 0)
+      return start
+    },
     getSelectedDate () {
-      let start = this.getDateFormat(this.dateRange.start) || new Date()
+      let start = this.getDateFormat(this.dateRange.start) || this.getDefaultStart()
       let end = this.getDateFormat(this.dateRange.end) || new Date()
 
       return {
@@ -213,6 +218,9 @@ export default {
       this.clearCheckBoxes()
     },
     updateCalendar: function (start, end) {
+      if (end.getHours() === 0) {
+        end.setHours(23, 59, 59, 999)
+      }
       this.showDateText = true
       this.selectedDate.start = start
       this.selectedDate.end = end
@@ -236,10 +244,6 @@ export default {
       }
     },
     applyAction: function () {
-      if (this.selectedDate.start.getTime() === this.selectedDate.end.getTime()) {
-        this.selectedDate.start.setHours(0, 0, 0, 0)
-        this.selectedDate.end.setHours(23, 59, 59, 999)
-      }
       const start = this.getEmmitDate(this.selectedDate.start)
       const end = this.getEmmitDate(this.selectedDate.end)
       this.appliedStart = this.selectedDate.start
@@ -272,7 +276,7 @@ export default {
     resetDefault () {
       this.appliedStart = null
       this.appliedEnd = null
-      this.selectedDate.start = new Date()
+      this.selectedDate.start = this.getDefaultStart()
       this.selectedDate.end = new Date()
       this.fromPage = {
         month: this.selectedDate.start.getMonth() + 1,
@@ -287,7 +291,7 @@ export default {
       this.dateRange.showDateText = false
     },
     formatDateToText: function (inputStart, inputEnd) {
-      const startDate = inputStart || new Date()
+      const startDate = inputStart || this.getDefaultStart()
       const endDate = inputEnd || new Date()
       const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
       if (this.showTime) {

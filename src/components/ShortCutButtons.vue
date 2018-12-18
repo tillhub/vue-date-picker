@@ -97,22 +97,30 @@ export default {
       }
     },
     goToToday: function () {
-      const today = new Date()
+      let start = new Date()
+      const end = new Date()
+      start.setHours(0, 0, 0, 0)
       this.$emit('update-short-cut', 'today')
-      this.$emit('update-calendar', today, today)
+      this.$emit('update-calendar', start, end)
     },
     goToYesterday: function () {
-      let yesterday = new Date()
-      yesterday.setDate(yesterday.getDate() - 1)
+      let start = new Date()
+      let end = new Date()
+      start.setDate(start.getDate() - 1)
+      start.setHours(0, 0, 0, 0)
+      end.setDate(end.getDate() - 1)
+      end.setHours(23, 59, 59, 999)
       this.$emit('update-short-cut', 'yesterday')
-      this.$emit('update-calendar', yesterday, yesterday)
+      this.$emit('update-calendar', start, end)
     },
     goToThisWeek: function () {
       let start = new Date()
       let end = new Date()
       let days = start.getDate() - start.getDay()
       start.setDate(days)
+      start.setHours(0, 0, 0, 0)
       end.setDate(days + 6)
+      end.setHours(23, 59, 59, 999)
       this.$emit('update-short-cut', 'thisWeek')
       this.$emit('update-calendar', start, end)
     },
@@ -121,7 +129,9 @@ export default {
       let end = new Date()
       let days = start.getDate() - start.getDay() - 7
       start.setDate(days)
+      start.setHours(0, 0, 0, 0)
       end.setDate(days + 6)
+      end.setHours(23, 59, 59, 999)
       this.$emit('update-short-cut', 'lastWeek')
       this.$emit('update-calendar', start, end)
     },
