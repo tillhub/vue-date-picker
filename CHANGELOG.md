@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/tillhub/vue-date-picker/compare/v1.8.0...v1.9.0) (2018-12-18)
+
+
+### Features
+
+* start dates times are 00:00 and end dates times are 23:59 ([75d940a](https://github.com/tillhub/vue-date-picker/commit/75d940a))
+
 # [1.8.0](https://github.com/tillhub/vue-date-picker/compare/v1.7.0...v1.8.0) (2018-12-17)
 
 
