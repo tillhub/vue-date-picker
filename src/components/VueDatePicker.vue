@@ -51,30 +51,18 @@
 
 <script>
 import Vue from 'vue'
-import 'element-ui/lib/theme-chalk/index.css'
+
 import enLocale from 'element-ui/lib/locale/lang/en'
 import deLocale from 'element-ui/lib/locale/lang/de'
 import ElementLocale from 'element-ui/lib/locale'
 import VueI18n from 'vue-i18n'
-import 'typeface-lato'
-
-import { Popover, Button, Row, Col, Switch, Checkbox, InputNumber, Select, Option, DatePicker } from 'element-ui'
 
 import ShortCutButtons from './ShortCutButtons.vue'
 import CustomComponent from './CustomComponent.vue'
 import DateRangePicker from './DateRangePicker.vue'
 import en from '../i18n/en.json'
 import de from '../i18n/de.json'
-Vue.use(Popover)
-Vue.use(Button)
-Vue.use(Row)
-Vue.use(Col)
-Vue.use(Switch)
-Vue.use(Checkbox)
-Vue.use(InputNumber)
-Vue.use(Select)
-Vue.use(Option)
-Vue.use(DatePicker)
+
 Vue.use(VueI18n)
 
 export default {
