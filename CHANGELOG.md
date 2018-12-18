@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/tillhub/vue-date-picker/compare/v1.9.0...v1.10.0) (2018-12-18)
+
+
+### Features
+
+* fix build size by removing imports element ui, font-leto, element ui css ([025807c](https://github.com/tillhub/vue-date-picker/commit/025807c))
+
 # [1.9.0](https://github.com/tillhub/vue-date-picker/compare/v1.8.0...v1.9.0) (2018-12-18)
 
 
