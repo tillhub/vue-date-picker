@@ -2,8 +2,7 @@
   <div id="vueDatePicker">
     <el-popover
       placement="bottom"
-      trigger="click"
-      :value="visableBox">
+      v-model="visableBox">
       <div class="p-sm">
         <div v-show="!simple">
           <h3>{{ getMessage() }}</h3>
