@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/tillhub/vue-date-picker/compare/v1.10.0...v1.11.0) (2019-03-29)
+
+
+### Features
+
+* remove on click on popover ([6533552](https://github.com/tillhub/vue-date-picker/commit/6533552))
+
 # [1.10.0](https://github.com/tillhub/vue-date-picker/compare/v1.9.0...v1.10.0) (2018-12-18)
 
 
