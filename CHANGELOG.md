@@ -4,6 +4,19 @@
 ### Bug Fixes
 
 * add ref to popover ([0afbde9](https://github.com/tillhub/vue-date-picker/commit/0afbde9))
+* change :value to v-model per element ui example ([893f76c](https://github.com/tillhub/vue-date-picker/commit/893f76c))
+
+
+### Features
+
+* adding click ([934d1db](https://github.com/tillhub/vue-date-picker/commit/934d1db))
+
+# [1.12.0](https://github.com/tillhub/vue-date-picker/compare/v1.11.0...v1.12.0) (2019-04-16)
+
+
+### Bug Fixes
+
+* add ref to popover ([0afbde9](https://github.com/tillhub/vue-date-picker/commit/0afbde9))
 
 
 ### Features
