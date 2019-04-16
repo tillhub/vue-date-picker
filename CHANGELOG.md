@@ -1,3 +1,15 @@
+# [1.12.0](https://github.com/tillhub/vue-date-picker/compare/v1.11.0...v1.12.0) (2019-04-16)
+
+
+### Bug Fixes
+
+* add ref to popover ([0afbde9](https://github.com/tillhub/vue-date-picker/commit/0afbde9))
+
+
+### Features
+
+* adding click ([934d1db](https://github.com/tillhub/vue-date-picker/commit/934d1db))
+
 # [1.11.0](https://github.com/tillhub/vue-date-picker/compare/v1.10.0...v1.11.0) (2019-03-29)
 
 
