@@ -4,7 +4,7 @@
       ref="date-popover"
       placement="bottom"
       trigger="click"
-      :value="visableBox">
+      v-model="visableBox">
       <el-button
         slot="reference"
         icon="el-icon-date"
