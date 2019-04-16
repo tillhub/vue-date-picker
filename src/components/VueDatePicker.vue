@@ -1,9 +1,22 @@
 <template>
   <div id="vueDatePicker">
     <el-popover
+      ref="date-popover"
       placement="bottom"
       trigger="click"
       :value="visableBox">
+      <el-button
+        slot="reference"
+        icon="el-icon-date"
+        :style="buttonStyle"
+        @click="showBox">
+        {{ getButtonText() }}
+        <i
+          class="clearable-date el-icon-error"
+          v-show="showClearable"
+          @click="resetDefault"
+          @click.stop/>
+      </el-button>
       <div class="p-sm">
         <div v-show="!simple">
           <h3>{{ getMessage() }}</h3>
@@ -33,18 +46,6 @@
             @reset-default="resetDefault"/>
         </div>
       </div>
-      <el-button
-        slot="reference"
-        icon="el-icon-date"
-        :style="buttonStyle"
-        @click="showBox">
-        {{ getButtonText() }}
-        <i
-          class="clearable-date el-icon-error"
-          v-show="showClearable"
-          @click="resetDefault"
-          @click.stop/>
-      </el-button>
     </el-popover>
   </div>
 </template>
