@@ -3,7 +3,8 @@
     <el-popover
       placement="bottom"
       trigger="click"
-      :value="visableBox">
+      v-model="visableBox"
+    >
       <div class="p-sm">
         <div v-show="!simple">
           <h3>{{ getMessage() }}</h3>
@@ -36,8 +37,7 @@
       <el-button
         slot="reference"
         icon="el-icon-date"
-        :style="buttonStyle"
-        @click="showBox">
+        :style="buttonStyle">
         {{ getButtonText() }}
         <i
           class="clearable-date el-icon-error"
@@ -197,9 +197,6 @@ export default {
         start: start,
         end: end
       }
-    },
-    showBox: function () {
-      this.visableBox = true
     },
     updateShortCut: function (label) {
       this.shortCutButton = label
