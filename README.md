@@ -10,7 +10,7 @@ npm install --save @tillhub/vue-date-picker
 ## Demo
 
 ```bash
-npm run storybook
+npm run serve
 ```
 
 ## Usage
@@ -75,4 +75,4 @@ The Date picker with only return the selected date from the component when the A
 | @clear     | fuction | ()=>{}               | n/a     | When 'clearable' props is true, this event emmits when the clear x is clicked |
 ## License
 
-MIT © [qtotuan](https://github.com/qtotuan)
+MIT © [jmy-kellogg](https://github.com/jmy-kellogg)
