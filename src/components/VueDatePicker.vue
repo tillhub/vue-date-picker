@@ -56,6 +56,7 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 import deLocale from 'element-ui/lib/locale/lang/de'
 import ElementLocale from 'element-ui/lib/locale'
 import VueI18n from 'vue-i18n'
+import { format } from 'date-fns'
 
 import ShortCutButtons from './ShortCutButtons.vue'
 import CustomComponent from './CustomComponent.vue'
@@ -105,6 +106,11 @@ export default {
     dateType: {
       type: 'date' | 'iso',
       default: 'date'
+    },
+    dateFormat: {
+      type: String,
+      required: false,
+      default: ''
     },
     dateRange: {
       type: Object,
@@ -283,8 +289,8 @@ export default {
         options.hour = 'numeric'
         options.minute = 'numeric'
       }
-      const start = startDate.toLocaleDateString(this.locale, options)
-      const end = endDate.toLocaleDateString(this.locale, options)
+      const start = this.dateFormat ? format(startDate, this.dateFormat) : startDate.toLocaleDateString(this.locale, options)
+      const end = this.dateFormat ? format(endDate, this.dateFormat) : endDate.toLocaleDateString(this.locale, options)
       if (start === end) {
         return start
       } else {

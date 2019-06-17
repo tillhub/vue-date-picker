@@ -4,6 +4,12 @@
       <h3>Default</h3>
       <vue-date-picker/>
     </div>
+    <div styles="">
+      <h3>With a specific format</h3>
+      <div>props:</div>
+      <div>date-format="YYYY-MM-DD"</div>
+      <vue-date-picker date-format="YYYY-MM-DD" />
+    </div>
     <div>
       <h3>German</h3>
       <div>props:</div>
@@ -174,6 +180,8 @@ div {
 
 .examples {
   margin: 10% 50%;
+  width: 100vw;
+
 }
 
 #vueDatePicker {
