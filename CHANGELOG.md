@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/tillhub/vue-date-picker/compare/v2.0.0...v2.1.0) (2019-06-17)
+
+
+### Features
+
+* **format:** add date-format prop to format with date-fns ([17b95f9](https://github.com/tillhub/vue-date-picker/commit/17b95f9))
+
 # [2.0.0](https://github.com/tillhub/vue-date-picker/compare/v1.11.0...v2.0.0) (2019-04-18)
 
 
