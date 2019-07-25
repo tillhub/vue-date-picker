@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/tillhub/vue-date-picker/compare/v2.1.0...v2.2.0) (2019-07-25)
+
+
+### Features
+
+* **App:** add example for [@clear](https://github.com/clear) ([235387f](https://github.com/tillhub/vue-date-picker/commit/235387f))
+* **datepicker:** reactive dateRange prop ([601716d](https://github.com/tillhub/vue-date-picker/commit/601716d))
+
 # [2.1.0](https://github.com/tillhub/vue-date-picker/compare/v2.0.0...v2.1.0) (2019-06-17)
 
 
