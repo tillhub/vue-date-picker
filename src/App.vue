@@ -119,6 +119,15 @@
         :clearable="true"
         @clear="clearDate"/>
     </div>
+    <div>
+      <h3>Reacting to dates being input</h3>
+      <div>props:</div>
+      <div>:date-range</div>
+      <vue-date-picker
+        :date-range="daterange"
+      />
+    </div>
+    <div><button @click="changeDaterange">Change date range</button></div>
   </div>
 </template>
 
@@ -145,6 +154,11 @@ export default {
         start: start.toISOString(),
         end: new Date().toISOString(),
         showDateText: true
+      },
+      daterange: {
+        start: start.toISOString(),
+        end: new Date().toISOString(),
+        showDateText: true
       }
     }
   },
@@ -168,6 +182,14 @@ export default {
     clearDate () {
       console.log('clear')
       this.stringDateRange = {}
+    },
+    changeDaterange () {
+      console.log('changeDaterange')
+      this.daterange = {
+        start: '2019-04-23T15:09:25.526Z',
+        end: '2019-04-26T15:09:25.526Z',
+        showDateText: true
+      }
     }
   }
 }

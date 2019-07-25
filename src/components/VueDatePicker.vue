@@ -320,6 +320,18 @@ export default {
         return this.formatDateToText(this.selectedDate.start, this.selectedDate.end)
       }
     }
+  },
+  watch: {
+    dateRange (value) {
+      // This is a workaround to make the vue date picker update whenever its dateRange prop changes
+      // The following line makes the DateRangePicker reactive to dateRange by
+      // updating selectedDate, appliedStart, appliedEnd manually
+      // as they are not computed properties but an attribute of "data"
+
+      this.selectedDate = this.getSelectedDate()
+      this.appliedStart = this.getDateFormat(value.start)
+      this.appliedEnd = this.getDateFormat(value.end)
+    }
   }
 }
 </script>
