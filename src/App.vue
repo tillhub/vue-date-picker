@@ -120,14 +120,24 @@
         @clear="clearDate"/>
     </div>
     <div>
-      <h3>Reacting to dates being input</h3>
+      <h3>Reacting to dates being input from outside</h3>
       <div>props:</div>
       <div>:date-range</div>
       <vue-date-picker
         :date-range="daterange"
       />
+      <div><button @click="changeDaterange">Change date range</button></div>
     </div>
-    <div><button @click="changeDaterange">Change date range</button></div>
+    <div>
+      <h3>Listen to @clear</h3>
+      <div>props:</div>
+      <div>@clear="handleClear"</div>
+      <div>:date-range="daterange"</div>
+      <vue-date-picker
+        @clear="handleClear"
+        :date-range="daterange"
+      />
+    </div>
   </div>
 </template>
 
@@ -185,6 +195,14 @@ export default {
     },
     changeDaterange () {
       console.log('changeDaterange')
+      this.daterange = {
+        start: '2019-04-23T15:09:25.526Z',
+        end: '2019-04-26T15:09:25.526Z',
+        showDateText: true
+      }
+    },
+    handleClear () {
+      console.log('handleClear')
       this.daterange = {
         start: '2019-04-23T15:09:25.526Z',
         end: '2019-04-26T15:09:25.526Z',
