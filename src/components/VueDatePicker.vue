@@ -1,7 +1,7 @@
 <template>
   <div id="vueDatePicker">
     <el-popover
-      placement="bottom"
+      :placement="placement"
       trigger="click"
       v-model="visableBox"
     >
@@ -134,6 +134,10 @@ export default {
     clearable: {
       type: Boolean,
       default: false
+    },
+    placement: {
+      type: string,
+      default: 'bottom'
     }
   },
   mounted () {
@@ -294,7 +298,8 @@ export default {
       if (start === end) {
         return start
       } else {
-        return start + ' to ' + end
+        const to = this.getTranlation('to')
+        return `${start} ${to} ${end}`
       }
     },
     toggleClearable: function (shouldShow) {

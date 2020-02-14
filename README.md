@@ -55,6 +55,7 @@ The components accepts optional properties.
 |:-------------------- |:--------|:---------|:-----------------------------------------------------------|:----------|:------------------------------------------------------------------------------------ |
 | locale               | string  | no       | "de" or "en"                                               | "en"      | Currently only German and English is supported. Only 'de' and 'en '                  |
 | tint-color           | string  | no       | "#50e3c1"                                                  | "#357ebd" | This allows customized color of the highlighted date range on the calender           |
+| placement            | string | no        | right                                                      | bottom    | The side of the button that the date picker will open from                           |
 | button-label         | string  | no       | "All Time"                                                 | "Select"  | Customized Button Label to override default                                          |
 | button-width         | string  | no       | "100px"                                                    | "auto"    | Overrides the button width, but default it adjust to content                         |
 | date-type            | string  | no       | "iso" or "date"                                            | "date"    | Formats the get-dates (start/end) to either date format or ISO string format         |
