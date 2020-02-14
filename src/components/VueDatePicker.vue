@@ -136,7 +136,7 @@ export default {
       default: false
     },
     placement: {
-      type: string,
+      type: String,
       default: 'bottom'
     }
   },
