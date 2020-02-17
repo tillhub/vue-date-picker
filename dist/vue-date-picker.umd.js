@@ -801,7 +801,7 @@ module.exports = isMonday
 /***/ "2508":
 /***/ (function(module) {
 
-module.exports = {"today":"Heute","yesterday":"Gestern","thisWeek":"Diese Woche","lastWeek":"Letzte Woche","thisMonth":"Dieser Monat","lastMonth":"Letzter Monat","thisYear":"Dieses Jahr","lastYear":"Vergangenes Jahr","custom":"Custom","to":"zu","last":"Letzte(r)","since":"seit","reset":"Zurück","apply":"Anwenden","instructions":"Wählen Sie aus den untenstehenden Daten aus","selectDateAndTime":"Wählen Sie Daten und Uhrzeit aus","days":"Tage","weeks":"Wochen","months":"Monate","years":"Jahre","select":"Auswahl"};
+module.exports = {"today":"Heute","yesterday":"Gestern","thisWeek":"Diese Woche","lastWeek":"Letzte Woche","thisMonth":"Dieser Monat","lastMonth":"Letzter Monat","thisYear":"Dieses Jahr","lastYear":"Vergangenes Jahr","custom":"Custom","to":"bis","last":"Letzte(r)","since":"seit","reset":"Zurück","apply":"Anwenden","instructions":"Wählen Sie aus den untenstehenden Daten aus","selectDateAndTime":"Wählen Sie Daten und Uhrzeit aus","days":"Tage","weeks":"Wochen","months":"Monate","years":"Jahre","select":"Auswahl"};
 
 /***/ }),
 
@@ -7848,12 +7848,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cb29a978-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueDatePicker.vue?vue&type=template&id=0b2998b8&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"vueDatePicker"}},[_c('el-popover',{attrs:{"placement":"bottom","trigger":"click"},model:{value:(_vm.visableBox),callback:function ($$v) {_vm.visableBox=$$v},expression:"visableBox"}},[_c('div',{staticClass:"p-sm"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('h3',[_vm._v(_vm._s(_vm.getMessage()))])]),_c('DateRangePicker',{attrs:{"tint-color":_vm.tintColor,"locale":_vm.locale,"selected-date":_vm.selectedDate,"from-page":_vm.fromPage},on:{"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearOptions}}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('ShortCutButtons',{attrs:{"locale":_vm.locale,"short-cut-button":_vm.shortCutButton},on:{"update-short-cut":_vm.updateShortCut,"update-calendar":_vm.updateCalendar}}),_c('CustomComponent',{attrs:{"locale":_vm.locale,"last-check":_vm.lastCheck,"since-check":_vm.sinceCheck,"init-custom-toggle":_vm.initCustomToggle},on:{"apply-action":_vm.applyAction,"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearShortCutButton,"update-checks":_vm.updateChecks,"reset-default":_vm.resetDefault}})],1)],1),_c('el-button',{style:(_vm.buttonStyle),attrs:{"slot":"reference","icon":"el-icon-date"},slot:"reference"},[_vm._v("\n      "+_vm._s(_vm.getButtonText())+"\n      "),_c('i',{directives:[{name:"show",rawName:"v-show",value:(_vm.showClearable),expression:"showClearable"}],staticClass:"clearable-date el-icon-error",on:{"click":[_vm.resetDefault,function($event){$event.stopPropagation();}]}})])],1)],1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cb29a978-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueDatePicker.vue?vue&type=template&id=03721cab&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"vueDatePicker"}},[_c('el-popover',{attrs:{"placement":_vm.placement,"trigger":"click"},model:{value:(_vm.visableBox),callback:function ($$v) {_vm.visableBox=$$v},expression:"visableBox"}},[_c('div',{staticClass:"p-sm"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('h3',[_vm._v(_vm._s(_vm.getMessage()))])]),_c('DateRangePicker',{attrs:{"tint-color":_vm.tintColor,"locale":_vm.locale,"selected-date":_vm.selectedDate,"from-page":_vm.fromPage},on:{"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearOptions}}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('ShortCutButtons',{attrs:{"locale":_vm.locale,"short-cut-button":_vm.shortCutButton},on:{"update-short-cut":_vm.updateShortCut,"update-calendar":_vm.updateCalendar}}),_c('CustomComponent',{attrs:{"locale":_vm.locale,"last-check":_vm.lastCheck,"since-check":_vm.sinceCheck,"init-custom-toggle":_vm.initCustomToggle},on:{"apply-action":_vm.applyAction,"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearShortCutButton,"update-checks":_vm.updateChecks,"reset-default":_vm.resetDefault}})],1)],1),_c('el-button',{style:(_vm.buttonStyle),attrs:{"slot":"reference","icon":"el-icon-date"},slot:"reference"},[_vm._v("\n      "+_vm._s(_vm.getButtonText())+"\n      "),_c('i',{directives:[{name:"show",rawName:"v-show",value:(_vm.showClearable),expression:"showClearable"}],staticClass:"clearable-date el-icon-error",on:{"click":[_vm.resetDefault,function($event){$event.stopPropagation();}]}})])],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VueDatePicker.vue?vue&type=template&id=0b2998b8&
+// CONCATENATED MODULE: ./src/components/VueDatePicker.vue?vue&type=template&id=03721cab&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/defineProperty.js
 function _defineProperty(obj, key, value) {
@@ -10296,6 +10296,10 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
     clearable: {
       type: Boolean,
       default: false
+    },
+    placement: {
+      type: String,
+      default: 'bottom'
     }
   },
   mounted: function mounted() {
@@ -10469,7 +10473,8 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
       if (start === end) {
         return start;
       } else {
-        return start + ' to ' + end;
+        var to = this.getTranlation('to');
+        return "".concat(start, " ").concat(to, " ").concat(end);
       }
     },
     toggleClearable: function toggleClearable(shouldShow) {

@@ -1,3 +1,11 @@
+## [2.2.1](https://github.com/tillhub/vue-date-picker/compare/v2.2.0...v2.2.1) (2020-02-17)
+
+
+### Bug Fixes
+
+* **date-picker:** add placement prop, fix translation ([59be453](https://github.com/tillhub/vue-date-picker/commit/59be453))
+* **date-picker:** fix prop type ([ca2b95e](https://github.com/tillhub/vue-date-picker/commit/ca2b95e))
+
 # [2.2.0](https://github.com/tillhub/vue-date-picker/compare/v2.1.0...v2.2.0) (2019-07-25)
 
 
