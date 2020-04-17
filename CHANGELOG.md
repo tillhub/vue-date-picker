@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/tillhub/vue-date-picker/compare/v2.2.1...v2.3.0) (2020-04-17)
+
+
+### Features
+
+* update dates fns dep to v2.9.0 ([f512673](https://github.com/tillhub/vue-date-picker/commit/f512673))
+
 ## [2.2.1](https://github.com/tillhub/vue-date-picker/compare/v2.2.0...v2.2.1) (2020-02-17)
 
 
