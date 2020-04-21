@@ -10,7 +10,8 @@
     :from-page="fromPage"
     :pane-width="200"
     :theme-styles="themeStyles"
-    @input="selectCalenderFromGui"/>
+    @input="selectCalenderFromGui"
+  />
 </template>
 
 <script>

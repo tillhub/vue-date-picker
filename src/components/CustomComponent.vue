@@ -3,22 +3,26 @@
     <el-row
       type="flex"
       justify="space-between"
-      align="middle">
+      align="middle"
+    >
       <h3>{{ getTranlation("custom") }}</h3>
       <el-switch
         v-model="showCustom"
-        active-color="#50e3c1"/>
+        active-color="#50e3c1"
+      />
     </el-row>
 
     <el-row :class="{'hide': !showCustom}">
       <el-row
         type="flex"
         class="p-xs"
-        align="middle">
+        align="middle"
+      >
         <el-checkbox
           :value="lastCheck"
           name="lastCheck"
-          @change="checkedBox"/>
+          @change="checkedBox"
+        />
         <span class="check-lable">{{ getTranlation("last") }}</span>
         <el-input-number
           size="mini"
@@ -26,48 +30,56 @@
           class="num-input"
           @focus="checkLast"
           @change="applyLast"
-          :controls="false"/>
+          :controls="false"
+        />
         <el-select
           v-model="lastDropdown"
           class="select-dropdown"
           placeholder="select"
           size="mini"
           @focus="checkLast"
-          @change="applyLast">
+          @change="applyLast"
+        >
           <el-option
             v-for="item in dateUnits"
             :key="item"
             :label="getTranlation(item)"
-            :value="item"/>
+            :value="item"
+          />
         </el-select>
       </el-row>
 
       <el-row
         type="flex"
         class="p-xs"
-        align="middle">
+        align="middle"
+      >
         <el-checkbox
           :value="sinceCheck"
           name="sinceCheck"
-          @change="checkedBox"/>
+          @change="checkedBox"
+        />
         <el-input-number
           size="mini"
           v-model="sinceInput"
           class="num-input"
           @focus="checkSince"
-          :controls="false"/>
+          :controls="false"
+        />
         <el-select
           v-model="sinceDropdown"
           class="select-dropdown"
           placeholder="years"
           size="mini"
           @focus="checkSince"
-          @change="applySince">
+          @change="applySince"
+        >
           <el-option
             v-for="item in dateUnits"
             :key="item"
             :label="getTranlation(item)"
-            :value="item"/>
+            :value="item"
+          />
         </el-select>
         <span class="check-lable">{{ getTranlation("since") }}</span>
         <el-date-picker
@@ -78,18 +90,25 @@
           default-time="12:00:00"
           :placeholder="getTranlation('selectDateAndTime')"
           @focus="checkSince"
-          @change="applySince"/>
+          @change="applySince"
+        />
       </el-row>
     </el-row>
 
     <el-row
       type="flex"
       class="m-t-md"
-      justify="center">
-      <el-button @click="resetDefault">{{ getTranlation("reset") }}</el-button>
+      justify="center"
+    >
+      <el-button @click="resetDefault">
+        {{ getTranlation("reset") }}
+      </el-button>
       <el-button
         type="primary"
-        @click="applyAction">{{ getTranlation("apply") }}</el-button>
+        @click="applyAction"
+      >
+        {{ getTranlation("apply") }}
+      </el-button>
     </el-row>
   </el-row>
 </template>
@@ -205,29 +224,29 @@ export default {
       this.sinceDateTime = null
     },
     setByDays: function (num, inputDate) {
-      let start = inputDate ? new Date(inputDate) : new Date()
-      let end = inputDate ? new Date(inputDate) : new Date()
+      const start = inputDate ? new Date(inputDate) : new Date()
+      const end = inputDate ? new Date(inputDate) : new Date()
 
-      let days = num - 1
+      const days = num - 1
       start.setDate(start.getDate() - days)
       this.updateCalenderDates(start, end)
     },
     setByWeeks: function (num, inputDate) {
-      let start = inputDate ? new Date(inputDate) : new Date()
-      let end = inputDate ? new Date(inputDate) : new Date()
+      const start = inputDate ? new Date(inputDate) : new Date()
+      const end = inputDate ? new Date(inputDate) : new Date()
 
-      let days = num * 7 - 1
+      const days = num * 7 - 1
       start.setDate(start.getDate() - days)
       this.updateCalenderDates(start, end)
     },
     setByMonths: function (num, inputDate) {
-      let date = inputDate ? new Date(inputDate) : new Date()
+      const date = inputDate ? new Date(inputDate) : new Date()
       const start = new Date(date.getFullYear(), date.getMonth() - num, date.getDate())
       const end = date
       this.updateCalenderDates(start, end)
     },
     setByYears: function (num, inputDate) {
-      let date = inputDate ? new Date(inputDate) : new Date()
+      const date = inputDate ? new Date(inputDate) : new Date()
       const start = new Date(date.getFullYear() - num, date.getDate())
       const end = date
       this.updateCalenderDates(start, end)

@@ -2,7 +2,7 @@
   <div class="examples">
     <div>
       <h3>Default</h3>
-      <vue-date-picker/>
+      <vue-date-picker />
     </div>
     <div styles="">
       <h3>With a specific format</h3>
@@ -14,19 +14,19 @@
       <h3>German</h3>
       <div>props:</div>
       <div>locale="de"</div>
-      <vue-date-picker locale="de"/>
+      <vue-date-picker locale="de" />
     </div>
     <div>
       <h3>Tint&nbsp;Color</h3>
       <div>props:</div>
       <div>tint&#8209;color="#e67382"</div>
-      <vue-date-picker tint-color="#e67382"/>
+      <vue-date-picker tint-color="#e67382" />
     </div>
     <div>
       <h3>Button&nbsp;Label</h3>
       <div>props:</div>
       <div>button&#8209;label="All&nbsp;Time"</div>
-      <vue-date-picker button-label="All Time"/>
+      <vue-date-picker button-label="All Time" />
     </div>
     <div>
       <h3>Button&nbsp;Width</h3>
@@ -34,19 +34,20 @@
       <div>button&#8209;width="300px"</div>
       <vue-date-picker
         button-width="300px"
-        :show-time="false"/>
+        :show-time="false"
+      />
     </div>
     <div>
       <h3>ShowTime</h3>
       <div>props:</div>
       <div>:show&#8209;time="false"</div>
-      <vue-date-picker :show-time="false"/>
+      <vue-date-picker :show-time="false" />
     </div>
     <div>
       <h3>HideDateInButton</h3>
       <div>props:</div>
       <div>:hide&nbsp;date&nbsp;in&nbsp;button="true"</div>
-      <vue-date-picker :hide-date-in-button="true"/>
+      <vue-date-picker :hide-date-in-button="true" />
       <vue-date-picker
         locale="en"
         tint-color="#357ebd"
@@ -55,14 +56,16 @@
         :hide-date-in-button="true"
         :show-time="false"
         :date-range="selectedDate"
-        @get-dates="printTheDate"/>
+        @get-dates="printTheDate"
+      />
     </div>
     <div>
       <h3>Inital&nbsp;Status&nbsp;of&nbsp;Custom&nbsp;Toggle</h3>
       <div>props:</div>
       <div>:init&nbsp;custom&nbsp;toggle="false"</div>
       <vue-date-picker
-        :init-custom-toggle="false" />
+        :init-custom-toggle="false"
+      />
     </div>
     <div>
       <h3>Custom</h3>
@@ -75,7 +78,8 @@
         :show-time="false"
         :init-custom-toggle="false"
         :date-range="selectedDate"
-        @get-dates="printTheDate"/>
+        @get-dates="printTheDate"
+      />
     </div>
     <div>
       <h3>String&nbsp;Input</h3>
@@ -89,7 +93,8 @@
         :show-time="true"
         :init-custom-toggle="true"
         :date-range="stringDateRange"
-        @get-dates="setStringDateRange"/>
+        @get-dates="setStringDateRange"
+      />
     </div>
     <div>
       <h3>Simple&nbsp;Date&nbsp;Range&nbsp;Picker</h3>
@@ -97,7 +102,8 @@
       <div>:simple="true"</div>
       <vue-date-picker
         :simple="true"
-        :clearable="true"/>
+        :clearable="true"
+      />
       <vue-date-picker
         locale="en"
         tint-color="#357ebd"
@@ -109,7 +115,8 @@
         :date-range="stringDateRange"
         :simple="true"
         :clearable="true"
-        @get-dates="setStringDateRange"/>
+        @get-dates="setStringDateRange"
+      />
     </div>
     <div>
       <h3>Clearable</h3>
@@ -117,7 +124,8 @@
       <div>:clearable="true"</div>
       <vue-date-picker
         :clearable="true"
-        @clear="clearDate"/>
+        @clear="clearDate"
+      />
     </div>
     <div>
       <h3>Reacting to dates being input from outside</h3>
@@ -126,7 +134,11 @@
       <vue-date-picker
         :date-range="daterange"
       />
-      <div><button @click="changeDaterange">Change date range</button></div>
+      <div>
+        <button @click="changeDaterange">
+          Change date range
+        </button>
+      </div>
     </div>
     <div>
       <h3>Listen to @clear</h3>

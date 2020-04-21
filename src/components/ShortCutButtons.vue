@@ -2,20 +2,27 @@
   <el-row
     type="flex"
     class="p-sm"
-    justify="space-between">
+    justify="space-between"
+  >
     <div>
       <el-button
         plain
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'today' }"
-        @click="goToToday">{{ getTranlation("today") }}</el-button>
+        @click="goToToday"
+      >
+        {{ getTranlation("today") }}
+      </el-button>
       <el-button
         plain
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'yesterday' }"
-        @click="goToYesterday">{{ getTranlation("yesterday") }}</el-button>
+        @click="goToYesterday"
+      >
+        {{ getTranlation("yesterday") }}
+      </el-button>
     </div>
     <div>
       <el-button
@@ -23,13 +30,19 @@
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'thisWeek' }"
-        @click="goToThisWeek">{{ getTranlation("thisWeek") }}</el-button>
+        @click="goToThisWeek"
+      >
+        {{ getTranlation("thisWeek") }}
+      </el-button>
       <el-button
         plain
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'lastWeek' }"
-        @click="goToLastWeek">{{ getTranlation("lastWeek") }}</el-button>
+        @click="goToLastWeek"
+      >
+        {{ getTranlation("lastWeek") }}
+      </el-button>
     </div>
     <div>
       <el-button
@@ -37,13 +50,19 @@
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'thisMonth' }"
-        @click="goToThisMonth">{{ getTranlation("thisMonth") }}</el-button>
+        @click="goToThisMonth"
+      >
+        {{ getTranlation("thisMonth") }}
+      </el-button>
       <el-button
         plain
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'lastMonth' }"
-        @click="goToLastMonth">{{ getTranlation("lastMonth") }}</el-button>
+        @click="goToLastMonth"
+      >
+        {{ getTranlation("lastMonth") }}
+      </el-button>
     </div>
     <div>
       <el-button
@@ -51,13 +70,19 @@
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'thisYear' }"
-        @click="goToThisYear">{{ getTranlation("thisYear") }}</el-button>
+        @click="goToThisYear"
+      >
+        {{ getTranlation("thisYear") }}
+      </el-button>
       <el-button
         plain
         type="text"
         class="goToButton"
         :class="{ active: shortCutButton === 'lastYear' }"
-        @click="goToLastYear">{{ getTranlation("lastYear") }}</el-button>
+        @click="goToLastYear"
+      >
+        {{ getTranlation("lastYear") }}
+      </el-button>
     </div>
   </el-row>
 </template>
@@ -97,15 +122,15 @@ export default {
       }
     },
     goToToday: function () {
-      let start = new Date()
+      const start = new Date()
       const end = new Date()
       start.setHours(0, 0, 0, 0)
       this.$emit('update-short-cut', 'today')
       this.$emit('update-calendar', start, end)
     },
     goToYesterday: function () {
-      let start = new Date()
-      let end = new Date()
+      const start = new Date()
+      const end = new Date()
       start.setDate(start.getDate() - 1)
       start.setHours(0, 0, 0, 0)
       end.setDate(end.getDate() - 1)
@@ -114,9 +139,9 @@ export default {
       this.$emit('update-calendar', start, end)
     },
     goToThisWeek: function () {
-      let start = new Date()
-      let end = new Date()
-      let days = start.getDate() - start.getDay()
+      const start = new Date()
+      const end = new Date()
+      const days = start.getDate() - start.getDay()
       start.setDate(days)
       start.setHours(0, 0, 0, 0)
       end.setDate(days + 6)
@@ -125,9 +150,9 @@ export default {
       this.$emit('update-calendar', start, end)
     },
     goToLastWeek: function () {
-      let start = new Date()
-      let end = new Date()
-      let days = start.getDate() - start.getDay() - 7
+      const start = new Date()
+      const end = new Date()
+      const days = start.getDate() - start.getDay() - 7
       start.setDate(days)
       start.setHours(0, 0, 0, 0)
       end.setDate(days + 6)

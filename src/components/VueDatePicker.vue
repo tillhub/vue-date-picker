@@ -15,35 +15,40 @@
           :selected-date="selectedDate"
           :from-page="fromPage"
           @update-calendar="updateCalendar"
-          @clear-options="clearOptions"/>
+          @clear-options="clearOptions"
+        />
         <div v-show="!simple">
           <ShortCutButtons
             :locale="locale"
             :short-cut-button="shortCutButton"
             @update-short-cut="updateShortCut"
-            @update-calendar="updateCalendar"/>
+            @update-calendar="updateCalendar"
+          />
           <CustomComponent
             :locale="locale"
-            :last-check ="lastCheck"
+            :last-check="lastCheck"
             :since-check="sinceCheck"
             :init-custom-toggle="initCustomToggle"
             @apply-action="applyAction"
             @update-calendar="updateCalendar"
             @clear-options="clearShortCutButton"
             @update-checks="updateChecks"
-            @reset-default="resetDefault"/>
+            @reset-default="resetDefault"
+          />
         </div>
       </div>
       <el-button
         slot="reference"
         icon="el-icon-date"
-        :style="buttonStyle">
+        :style="buttonStyle"
+      >
         {{ getButtonText() }}
         <i
           class="clearable-date el-icon-error"
           v-show="showClearable"
           @click="resetDefault"
-          @click.stop/>
+          @click.stop
+        />
       </el-button>
     </el-popover>
   </div>
@@ -104,7 +109,10 @@ export default {
       default: true
     },
     dateType: {
-      type: 'date' | 'iso',
+      type: String,
+      validator: prop => {
+        return ['date', 'iso'].includes(prop)
+      },
       default: 'date'
     },
     dateFormat: {
@@ -145,8 +153,8 @@ export default {
     const i18n = new VueI18n({
       locale: locale,
       messages: {
-        'en': { ...enLocale, ...en },
-        'de': { ...deLocale, ...de }
+        en: { ...enLocale, ...en },
+        de: { ...deLocale, ...de }
       }
     })
     ElementLocale.i18n((key, value) => i18n.t(key, value))
@@ -195,13 +203,13 @@ export default {
       return formattedDate
     },
     getDefaultStart () {
-      let start = new Date()
+      const start = new Date()
       start.setHours(0, 0, 0, 0)
       return start
     },
     getSelectedDate () {
-      let start = this.getDateFormat(this.dateRange.start) || this.getDefaultStart()
-      let end = this.getDateFormat(this.dateRange.end) || new Date()
+      const start = this.getDateFormat(this.dateRange.start) || this.getDefaultStart()
+      const end = this.getDateFormat(this.dateRange.end) || new Date()
 
       return {
         start: start,
