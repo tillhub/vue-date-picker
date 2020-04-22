@@ -14,6 +14,7 @@
       <h3>German</h3>
       <div>props:</div>
       <div>locale="de"</div>
+      <!-- NOTE: calling more than one instance of the datepicker component in a single render with different locale props is messing up element-ui's translations -->
       <vue-date-picker locale="de" />
     </div>
     <div>
