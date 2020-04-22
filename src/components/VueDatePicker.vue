@@ -55,6 +55,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
+import enLocale from 'element-ui/lib/locale/lang/en'
+import deLocale from 'element-ui/lib/locale/lang/de'
+import ElementLocale from 'element-ui/lib/locale'
+import VueI18n from 'vue-i18n'
 import { format } from 'date-fns'
 
 import ShortCutButtons from './ShortCutButtons.vue'
@@ -62,6 +68,8 @@ import CustomComponent from './CustomComponent.vue'
 import DateRangePicker from './DateRangePicker.vue'
 import en from '../i18n/en.json'
 import de from '../i18n/de.json'
+
+Vue.use(VueI18n)
 
 export default {
   name: 'VueDatePicker',
@@ -141,7 +149,15 @@ export default {
     }
   },
   mounted () {
-    this.$i18n.locale = this.getLocale()
+    const locale = this.getLocale()
+    const i18n = new VueI18n({
+      locale: locale,
+      messages: {
+        en: { ...enLocale, ...en },
+        de: { ...deLocale, ...de }
+      }
+    })
+    ElementLocale.i18n((key, value) => i18n.t(key, value))
   },
   data () {
     return {
