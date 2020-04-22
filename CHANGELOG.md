@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/tillhub/vue-date-picker/compare/v2.4.0...v2.4.1) (2020-04-22)
+
+
+### Bug Fixes
+
+* **i18n:** revert moving i18n to caller; ([f85ad83](https://github.com/tillhub/vue-date-picker/commit/f85ad832e49d121945d21fa0310d97a1d008f754))
+
 # [2.4.0](https://github.com/tillhub/vue-date-picker/compare/v2.3.0...v2.4.0) (2020-04-22)
 
 
