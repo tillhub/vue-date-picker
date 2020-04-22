@@ -1,12 +1,12 @@
 import { storiesOf } from '@storybook/vue'
-import VueDatePicker from '../src/components/VueDatePicker'
+import { i18n } from '../.storybook/i18n'
 
 storiesOf('VueDatePicker', module)
   .add('en locale', () => ({
-    components: { VueDatePicker },
-    template: '<vue-date-picker/>'
+    template: '<vue-date-picker/>',
+    i18n
   }))
   .add('de locale', () => ({
-    components: { VueDatePicker },
-    template: '<vue-date-picker locale="de"/>'
+    template: '<vue-date-picker locale="de" />',
+    i18n
   }))
