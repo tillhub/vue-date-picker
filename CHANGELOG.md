@@ -1,3 +1,11 @@
+# [2.4.0](https://github.com/tillhub/vue-date-picker/compare/v2.3.0...v2.4.0) (2020-04-22)
+
+
+### Features
+
+* **i18n:** move i18n config to caller to prevent conflicts ([706f4ab](https://github.com/tillhub/vue-date-picker/commit/706f4ab6ac90021ce90b3c6be9ce60f98d40bd54))
+* **storybook:** upgrade to storybook v5 ([49d229d](https://github.com/tillhub/vue-date-picker/commit/49d229d98443894a78e081ec899c05a8e24d4f2e))
+
 # [2.3.0](https://github.com/tillhub/vue-date-picker/compare/v2.2.1...v2.3.0) (2020-04-17)
 
 
