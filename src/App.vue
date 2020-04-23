@@ -7,8 +7,8 @@
     <div styles="">
       <h3>With a specific format</h3>
       <div>props:</div>
-      <div>date-format="YYYY-MM-DD"</div>
-      <vue-date-picker date-format="YYYY-MM-DD" />
+      <div>date-format="yyyy-MM-dd"</div>
+      <vue-date-picker date-format="yyyy-MM-dd" />
     </div>
     <div>
       <h3>German</h3>
