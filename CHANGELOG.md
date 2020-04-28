@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/tillhub/vue-date-picker/compare/v2.4.1...v2.4.2) (2020-04-28)
+
+
+### Bug Fixes
+
+* **custom:** fix last X years option ([ba3274c](https://github.com/tillhub/vue-date-picker/commit/ba3274c92ef084ffde61d6f797f8434e0027e228))
+
 ## [2.4.1](https://github.com/tillhub/vue-date-picker/compare/v2.4.0...v2.4.1) (2020-04-22)
 
 
