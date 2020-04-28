@@ -247,7 +247,7 @@ export default {
     },
     setByYears: function (num, inputDate) {
       const date = inputDate ? new Date(inputDate) : new Date()
-      const start = new Date(date.getFullYear() - num, date.getDate())
+      const start = new Date(date.getFullYear() - num, date.getMonth(), date.getDate())
       const end = date
       this.updateCalenderDates(start, end)
     }
