@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/tillhub/vue-date-picker/compare/v2.4.2...v2.5.0) (2020-05-18)
+
+
+### Features
+
+* add default shortcut prop and apply on mount ([1efb879](https://github.com/tillhub/vue-date-picker/commit/1efb879955b5febb6ddaf2dcdc4a1a4dfab902f5))
+
 ## [2.4.2](https://github.com/tillhub/vue-date-picker/compare/v2.4.1...v2.4.2) (2020-04-28)
 
 
