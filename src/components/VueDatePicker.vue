@@ -146,6 +146,20 @@ export default {
     placement: {
       type: String,
       default: 'bottom'
+    },
+    defaultShortCut: {
+      type: String,
+      default: null,
+      validator: (val) => {
+        return ['today',
+          'yesterday',
+          'thisWeek',
+          'lastWeek',
+          'thisMonth',
+          'lastMonth',
+          'thisYear',
+          'lastYear'].includes(val)
+      }
     }
   },
   mounted () {
@@ -158,6 +172,9 @@ export default {
       }
     })
     ElementLocale.i18n((key, value) => i18n.t(key, value))
+    if (this.defaultShortCut) {
+      this.updateShortCut(this.defaultShortCut)
+    }
   },
   data () {
     return {

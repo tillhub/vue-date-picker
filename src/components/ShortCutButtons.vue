@@ -88,8 +88,21 @@
 </template>
 
 <script>
+import typeOf from 'just-typeof'
+
 import en from '../i18n/en.json'
 import de from '../i18n/de.json'
+
+const shortcutMap = {
+  today: 'goToToday',
+  yesterday: 'goToYesterday',
+  thisWeek: 'goToThisWeek',
+  lastWeek: 'goToLastWeek',
+  thisMonth: 'goToThisMonth',
+  lastMonth: 'goToLastMonth',
+  thisYear: 'goToThisYear',
+  lastYear: 'goToLastYear'
+}
 
 export default {
   name: 'ShortCutButtons',
@@ -102,6 +115,18 @@ export default {
     locale: {
       type: String,
       required: true
+    }
+  },
+  watch: {
+    shortCutButton (shortcut) {
+      const shouldUpdateShortcut =
+        shortcut &&
+        this[shortcutMap[shortcut]] &&
+        typeOf(this[shortcutMap[shortcut]]) === 'function'
+
+      if (shouldUpdateShortcut) {
+        this[shortcutMap[shortcut]]()
+      }
     }
   },
   methods: {
@@ -161,28 +186,28 @@ export default {
       this.$emit('update-calendar', start, end)
     },
     goToThisMonth: function () {
-      var date = new Date()
+      const date = new Date()
       const start = new Date(date.getFullYear(), date.getMonth(), 1)
       const end = new Date(date.getFullYear(), date.getMonth() + 1, 0)
       this.$emit('update-short-cut', 'thisMonth')
       this.$emit('update-calendar', start, end)
     },
     goToLastMonth: function () {
-      var date = new Date()
+      const date = new Date()
       const start = new Date(date.getFullYear(), date.getMonth() - 1, 1)
       const end = new Date(date.getFullYear(), date.getMonth(), 0)
       this.$emit('update-short-cut', 'lastMonth')
       this.$emit('update-calendar', start, end)
     },
     goToThisYear: function () {
-      var date = new Date()
+      const date = new Date()
       const start = new Date(date.getFullYear(), 0, 1)
       const end = new Date(date.getFullYear() + 1, 0, 0)
       this.$emit('update-short-cut', 'thisYear')
       this.$emit('update-calendar', start, end)
     },
     goToLastYear: function () {
-      var date = new Date()
+      const date = new Date()
       const start = new Date(date.getFullYear() - 1, 0, 1)
       const end = new Date(date.getFullYear(), 0, 0)
       this.$emit('update-short-cut', 'lastYear')
