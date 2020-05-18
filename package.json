@@ -61,6 +61,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.2",
     "gh-pages": "^1.2.0",
+    "just-typeof": "^2.0.0",
     "rimraf": "^2.6.0",
     "semantic-release": "^15.9.17",
     "validate-commit-msg": "^2.14.0",
