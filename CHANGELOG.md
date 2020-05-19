@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/tillhub/vue-date-picker/compare/v2.5.1...v2.5.2) (2020-05-19)
+
+
+### Bug Fixes
+
+* in case of valid date range don't apply default short cut on mount ([0a24d31](https://github.com/tillhub/vue-date-picker/commit/0a24d31a9d9cf089a65e5ecb89be56cb0b931965))
+
 ## [2.5.1](https://github.com/tillhub/vue-date-picker/compare/v2.5.0...v2.5.1) (2020-05-19)
 
 

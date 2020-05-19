@@ -5023,12 +5023,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8b1fcc50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueDatePicker.vue?vue&type=template&id=65782faa&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6d68f374-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueDatePicker.vue?vue&type=template&id=51767718&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"vueDatePicker"}},[_c('el-popover',{attrs:{"placement":_vm.placement,"trigger":"click"},model:{value:(_vm.visableBox),callback:function ($$v) {_vm.visableBox=$$v},expression:"visableBox"}},[_c('div',{staticClass:"p-sm"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('h3',[_vm._v(_vm._s(_vm.getMessage()))])]),_c('DateRangePicker',{attrs:{"tint-color":_vm.tintColor,"locale":_vm.locale,"selected-date":_vm.selectedDate,"from-page":_vm.fromPage},on:{"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearOptions}}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.simple),expression:"!simple"}]},[_c('ShortCutButtons',{attrs:{"locale":_vm.locale,"short-cut-button":_vm.shortCutButton},on:{"update-short-cut":_vm.updateShortCut,"update-calendar":_vm.updateCalendar}}),_c('CustomComponent',{attrs:{"locale":_vm.locale,"last-check":_vm.lastCheck,"since-check":_vm.sinceCheck,"init-custom-toggle":_vm.initCustomToggle},on:{"apply-action":_vm.applyAction,"update-calendar":_vm.updateCalendar,"clear-options":_vm.clearShortCutButton,"update-checks":_vm.updateChecks,"reset-default":_vm.resetDefault}})],1)],1),_c('el-button',{style:(_vm.buttonStyle),attrs:{"slot":"reference","icon":"el-icon-date"},slot:"reference"},[_vm._v(" "+_vm._s(_vm.getButtonText())+" "),_c('i',{directives:[{name:"show",rawName:"v-show",value:(_vm.showClearable),expression:"showClearable"}],staticClass:"clearable-date el-icon-error",on:{"click":[_vm.resetDefault,function($event){$event.stopPropagation();}]}})])],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VueDatePicker.vue?vue&type=template&id=65782faa&
+// CONCATENATED MODULE: ./src/components/VueDatePicker.vue?vue&type=template&id=51767718&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -9619,7 +9619,7 @@ function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
 function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8b1fcc50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ShortCutButtons.vue?vue&type=template&id=2de030ca&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6d68f374-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ShortCutButtons.vue?vue&type=template&id=2de030ca&scoped=true&
 var ShortCutButtonsvue_type_template_id_2de030ca_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-row',{staticClass:"p-sm",attrs:{"type":"flex","justify":"space-between"}},[_c('div',[_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'today' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToToday}},[_vm._v(" "+_vm._s(_vm.getTranlation("today"))+" ")]),_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'yesterday' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToYesterday}},[_vm._v(" "+_vm._s(_vm.getTranlation("yesterday"))+" ")])],1),_c('div',[_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'thisWeek' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToThisWeek}},[_vm._v(" "+_vm._s(_vm.getTranlation("thisWeek"))+" ")]),_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'lastWeek' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToLastWeek}},[_vm._v(" "+_vm._s(_vm.getTranlation("lastWeek"))+" ")])],1),_c('div',[_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'thisMonth' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToThisMonth}},[_vm._v(" "+_vm._s(_vm.getTranlation("thisMonth"))+" ")]),_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'lastMonth' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToLastMonth}},[_vm._v(" "+_vm._s(_vm.getTranlation("lastMonth"))+" ")])],1),_c('div',[_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'thisYear' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToThisYear}},[_vm._v(" "+_vm._s(_vm.getTranlation("thisYear"))+" ")]),_c('el-button',{staticClass:"goToButton",class:{ active: _vm.shortCutButton === 'lastYear' },attrs:{"plain":"","type":"text"},on:{"click":_vm.goToLastYear}},[_vm._v(" "+_vm._s(_vm.getTranlation("lastYear"))+" ")])],1)])}
 var ShortCutButtonsvue_type_template_id_2de030ca_scoped_true_staticRenderFns = []
 
@@ -9969,7 +9969,7 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var ShortCutButtons = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8b1fcc50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CustomComponent.vue?vue&type=template&id=9125a620&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6d68f374-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CustomComponent.vue?vue&type=template&id=9125a620&scoped=true&
 var CustomComponentvue_type_template_id_9125a620_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-row',[_c('el-row',{attrs:{"type":"flex","justify":"space-between","align":"middle"}},[_c('h3',[_vm._v(_vm._s(_vm.getTranlation("custom")))]),_c('el-switch',{attrs:{"active-color":"#50e3c1"},model:{value:(_vm.showCustom),callback:function ($$v) {_vm.showCustom=$$v},expression:"showCustom"}})],1),_c('el-row',{class:{'hide': !_vm.showCustom}},[_c('el-row',{staticClass:"p-xs",attrs:{"type":"flex","align":"middle"}},[_c('el-checkbox',{attrs:{"value":_vm.lastCheck,"name":"lastCheck"},on:{"change":_vm.checkedBox}}),_c('span',{staticClass:"check-lable"},[_vm._v(_vm._s(_vm.getTranlation("last")))]),_c('el-input-number',{staticClass:"num-input",attrs:{"size":"mini","controls":false},on:{"focus":_vm.checkLast,"change":_vm.applyLast},model:{value:(_vm.lastInput),callback:function ($$v) {_vm.lastInput=$$v},expression:"lastInput"}}),_c('el-select',{staticClass:"select-dropdown",attrs:{"placeholder":"select","size":"mini"},on:{"focus":_vm.checkLast,"change":_vm.applyLast},model:{value:(_vm.lastDropdown),callback:function ($$v) {_vm.lastDropdown=$$v},expression:"lastDropdown"}},_vm._l((_vm.dateUnits),function(item){return _c('el-option',{key:item,attrs:{"label":_vm.getTranlation(item),"value":item}})}),1)],1),_c('el-row',{staticClass:"p-xs",attrs:{"type":"flex","align":"middle"}},[_c('el-checkbox',{attrs:{"value":_vm.sinceCheck,"name":"sinceCheck"},on:{"change":_vm.checkedBox}}),_c('el-input-number',{staticClass:"num-input",attrs:{"size":"mini","controls":false},on:{"focus":_vm.checkSince},model:{value:(_vm.sinceInput),callback:function ($$v) {_vm.sinceInput=$$v},expression:"sinceInput"}}),_c('el-select',{staticClass:"select-dropdown",attrs:{"placeholder":"years","size":"mini"},on:{"focus":_vm.checkSince,"change":_vm.applySince},model:{value:(_vm.sinceDropdown),callback:function ($$v) {_vm.sinceDropdown=$$v},expression:"sinceDropdown"}},_vm._l((_vm.dateUnits),function(item){return _c('el-option',{key:item,attrs:{"label":_vm.getTranlation(item),"value":item}})}),1),_c('span',{staticClass:"check-lable"},[_vm._v(_vm._s(_vm.getTranlation("since")))]),_c('el-date-picker',{staticClass:"time-picker",attrs:{"size":"mini","type":"datetime","default-time":"12:00:00","placeholder":_vm.getTranlation('selectDateAndTime')},on:{"focus":_vm.checkSince,"change":_vm.applySince},model:{value:(_vm.sinceDateTime),callback:function ($$v) {_vm.sinceDateTime=$$v},expression:"sinceDateTime"}})],1)],1),_c('el-row',{staticClass:"m-t-md",attrs:{"type":"flex","justify":"center"}},[_c('el-button',{on:{"click":_vm.resetDefault}},[_vm._v(" "+_vm._s(_vm.getTranlation("reset"))+" ")]),_c('el-button',{attrs:{"type":"primary"},on:{"click":_vm.applyAction}},[_vm._v(" "+_vm._s(_vm.getTranlation("apply"))+" ")])],1)],1)}
 var CustomComponentvue_type_template_id_9125a620_scoped_true_staticRenderFns = []
 
@@ -10259,7 +10259,7 @@ var CustomComponent_component = normalizeComponent(
 )
 
 /* harmony default export */ var CustomComponent = (CustomComponent_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8b1fcc50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/DateRangePicker.vue?vue&type=template&id=36358ec9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6d68f374-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/DateRangePicker.vue?vue&type=template&id=36358ec9&
 var DateRangePickervue_type_template_id_36358ec9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-date-picker',{attrs:{"mode":"range","tint-color":_vm.tintColor,"is-inline":"","is-double-paned":"","is-linked":"","update-on-input":"","value":_vm.selectedDate,"from-page":_vm.fromPage,"pane-width":200,"theme-styles":_vm.themeStyles},on:{"input":_vm.selectCalenderFromGui}})}
 var DateRangePickervue_type_template_id_36358ec9_staticRenderFns = []
 
@@ -10549,7 +10549,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var locale, i18n;
+      var locale, i18n, isDateRange;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -10565,19 +10565,20 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vue_i18n_esm);
               locale_default.a.i18n(function (key, value) {
                 return i18n.t(key, value);
               });
+              isDateRange = _this.dateRange.start && _this.dateRange.end;
 
-              if (!_this.defaultShortCut) {
-                _context.next = 7;
+              if (!(_this.defaultShortCut && !isDateRange)) {
+                _context.next = 8;
                 break;
               }
 
-              _context.next = 6;
+              _context.next = 7;
               return _this.updateShortCut(_this.defaultShortCut);
 
-            case 6:
+            case 7:
               _this.applyAction();
 
-            case 7:
+            case 8:
             case "end":
               return _context.stop();
           }
