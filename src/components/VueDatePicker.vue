@@ -172,7 +172,9 @@ export default {
       }
     })
     ElementLocale.i18n((key, value) => i18n.t(key, value))
-    if (this.defaultShortCut) {
+
+    const isDateRange = this.dateRange.start && this.dateRange.end
+    if (this.defaultShortCut && !isDateRange) {
       await this.updateShortCut(this.defaultShortCut)
       this.applyAction()
     }
