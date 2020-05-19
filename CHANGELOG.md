@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/tillhub/vue-date-picker/compare/v2.5.0...v2.5.1) (2020-05-19)
+
+
+### Bug Fixes
+
+* apply action on mount; reset to default shortcut ([60be49c](https://github.com/tillhub/vue-date-picker/commit/60be49c4e3b991dab15bdcb485431e22fea53e87))
+
 # [2.5.0](https://github.com/tillhub/vue-date-picker/compare/v2.4.2...v2.5.0) (2020-05-18)
 
 
