@@ -162,7 +162,7 @@ export default {
       }
     }
   },
-  mounted () {
+  async mounted () {
     const locale = this.getLocale()
     const i18n = new VueI18n({
       locale: locale,
@@ -173,7 +173,8 @@ export default {
     })
     ElementLocale.i18n((key, value) => i18n.t(key, value))
     if (this.defaultShortCut) {
-      this.updateShortCut(this.defaultShortCut)
+      await this.updateShortCut(this.defaultShortCut)
+      this.applyAction()
     }
   },
   data () {
@@ -294,6 +295,11 @@ export default {
       this.sinceCheck = since
     },
     resetDefault () {
+      this.shortCutButton = this.defaultShortCut || null
+      // in case of a default provided shortcut option, we will let the ShortCutButtons functionality
+      // take care of resetting to the initial state, i.e. setting the matching shortcut dates
+      if (this.shortCutButton) return
+
       this.appliedStart = null
       this.appliedEnd = null
       this.selectedDate.start = this.getDefaultStart()
@@ -302,7 +308,6 @@ export default {
         month: this.selectedDate.start.getMonth() + 1,
         year: this.selectedDate.start.getFullYear()
       }
-      this.shortCutButton = null
       this.lastCheck = false
       this.sinceCheck = false
       this.showDateText = false
