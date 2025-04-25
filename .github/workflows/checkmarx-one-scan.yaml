@@ -21,10 +21,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  security-scan:
-    uses: unzercorp/unzer-tech-toolbox/.github/workflows/security-scan.yaml@ci-github/1.6
-    with:
-      cx_threshold_preset: relaxed
+  ci:
+    uses: unzercorp/js-tech-toolbox/.github/workflows/checkmarx-one-scan.yml@main
     secrets:
-      CX_CLIENT_ID: ${{ secrets.CX_NON_PCI_TH_CORP_CLIENT_ID }}
-      CX_CLIENT_SECRET: ${{ secrets.CX_NON_PCI_TH_CORP_CLIENT_SECRET }}
+      inherit
